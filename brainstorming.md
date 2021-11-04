@@ -1,15 +1,31 @@
 # JAVASCRIPT
 
-positive points : _ - Can have help at the agency _ - A lot of tutorials are available _ - Poductivity faster -> no need to be formed on javascript _ - Community very active
+positive points :
 
-negative points : \* - high level language so it's heavy
+- Can have help at the agency
+- A lot of tutorials are available
+- Poductivity faster -> no need to be formed on javascript
+- Community very active
 
-    https://api.slack.com/web
+negative points :
+
+- high level language so it's heavy
+
+  https://api.slack.com/web
 
 # RUST
 
-positive points : _ -Opportunity to learn a new language _ - Similar to C++, so I could be able to learn it fast _ - low level language, performance faster _ - Big security _ - Language very exigent, so the leak of datas isn't possible _ - Community very active
+positive points :
 
-negative points : \* - Need time to learn it
+- Opportunity to learn a new language
+- Similar to C++, so I could be able to learn it fast
+- low level language, performance faster
+- Big security
+- Language very exigent, so the leak of datas isn't possible
+- Community very active
 
-    https://docs.rs/slack/0.25.0/slack/
+negative points :
+
+- Need time to learn it
+
+  https://docs.rs/slack/0.25.0/slack/
