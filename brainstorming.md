@@ -27,5 +27,6 @@ positive points :
 negative points :
 
 - Need time to learn it
+- Not a lot of tutorials are available on internet for a slack bot
 
   https://docs.rs/slack/0.25.0/slack/
