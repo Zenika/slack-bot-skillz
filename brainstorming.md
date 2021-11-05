@@ -13,6 +13,8 @@ negative points :
 
   https://api.slack.com/web
 
+https://api.slack.com/tools/bolt : According to Slack, it’s the “swiftest way to start programming with the Slack Platform in JavaScript.”
+
 # RUST
 
 positive points :
