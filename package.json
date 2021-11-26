@@ -1,0 +1,24 @@
+{
+  "name": "skillz-bot",
+  "version": "0.0.1",
+  "description": "basic bot for Skillz app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "@slack/bolt": "^3.8.1",
+    "dotenv": "^10.0.0"
+  },
+  "engines": {
+    "node": "11.x"
+  },
+  "repository": {
+    "url": "https://glitch.com/edit/#!/bolt-app-template"
+  },
+  "license": "MIT",
+  "keywords": [
+    "node",
+    "express"
+  ]
+}
