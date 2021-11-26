@@ -1,7 +1,7 @@
 {
-  "name": "bolt-app-template",
+  "name": "skillz-bot",
   "version": "0.0.1",
-  "description": "A basic template to spin up a Bolt app for Slack",
+  "description": "basic bot for Skillz app",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
