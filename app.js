@@ -1,10 +1,15 @@
 const { App } = require("@slack/bolt");
+const request = require("request");
+const qs = require("qs");
 require("dotenv").config();
+const { Octokit } = require("@octokit/core");
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
   signingSecret: process.env.SLACK_SIGNING_SECRET
 });
+
+const hookPersonalMessages = 'T02LBG2Q75Y/B02NMKRLUUV/rw5LEm7xefkuLz0yiIcKF7vL';
 
 
 
@@ -83,7 +88,6 @@ app.command('/helloworld', async ({ ack, payload, context }) => {
       // Text in the notification
       text: 'Message from Test App'
     });
-    console.log(result);
   }
   catch (error) {
     console.error(error);
@@ -113,17 +117,47 @@ app.action('button_abc', async ({ ack, body, context }) => {
       ],
       text: 'Message from Test App'
     });
-    console.log(result);
   }
   catch (error) {
     console.error(error);
   }
 });
 
+const octokit = new Octokit({ auth: "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" });
 
+const getData = async function () {
+  const res = await octokit.request("GET /repos/{owner}/{repo}/releases", {
+    owner: 'MailyLehoux',
+    repo: 'bot-skillz',
+  });
+  const resJSON = JSON.stringify(res);
+  return resJSON
+};
 
 (async () => {
   await app.start(process.env.PORT || 3000);
+  try {
+    const releaseInfo = await getData();
+    console.log(releaseInfo)
+    const slackBodyGithubMessage = {
+      mkdwn: true,
+      text: `*${releaseInfo}*`,
+      attachments: ({
+        color: 'good',
+        text: `*${releaseInfo}*`
+      })
+    }
 
+    const res = await request({
+      url: `https://hooks.slack.com/services/${hookPersonalMessages}`,
+      method: 'POST',
+      body: slackBodyGithubMessage,
+      json: true
+    })
+
+  } catch (e) {
+    console.log('our error', e);
+  }
+  debugger;
   console.log('⚡️ Bolt app is running!');
 })();
