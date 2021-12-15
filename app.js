@@ -4,7 +4,8 @@ const qs = require("qs");
 require("dotenv").config();
 const { Octokit } = require("@octokit/core");
 const fetch = require("node-fetch");
-const { createOrUpdateTextFile } = require("@octokit/plugin-create-or-update-text-file")
+const { createOrUpdateTextFile } = require("@octokit/plugin-create-or-update-text-file");
+const { post } = require("request");
 
 const expressReceiver = new ExpressReceiver({
   signingSecret: process.env.SLACK_SIGNING_SECRET
@@ -124,14 +125,74 @@ app.command('/helloworld', async ({ ack, payload, context }) => {
 
 /* var response = fetch(("https://slack.com/api/users.lookupByEmail?token=" + TOKEN + "&email=" + email), options);
 */
+
 const slackLookupByEmail = async function (email) {
+  try {
   const result = await app.client.users.lookupByEmail({
     token: process.env.SLACK_BOT_TOKEN,
-    email: 'mai-ly.lehoux@zenika.com'
+    email: email
   });
-  const userInformation = JSON.parse(result)
-  console.log(userInformation.user.id)
-  return userInformation.user.id
+  console.log(result.user.id)
+  //const userInformation = JSON.parse(result)
+  return result.user
+  
+} catch (e) {
+    console.log(e)
+  }
+}
+
+const sendMessagesToAnUser = async function (email) {
+  try {
+  const result = await app.client.users.lookupByEmail({
+    token: process.env.SLACK_BOT_TOKEN,
+    email: email
+  });
+  const channelID = await getChannelID(result.user.id)
+  console.log(channelID)
+  postMessage(channelID)
+  return result.user
+  
+} catch (e) {
+    console.log(e)
+  }
+}
+
+const getChannelID = async function (userID) {
+  try {
+    const result = await app.client.conversations.open({
+      token: process.env.SLACK_BOT_TOKEN,
+      users: userID
+    });
+    if (result.ok === true) {
+      //console.log(result.channel.id)
+      return result.channel.id
+    }
+  } catch(e) {
+    console.log(e)
+  }
+  return "";
+}
+
+const postMessage = async function (channelID) {
+  console.log(channelID)
+  try {
+    const result = await app.client.chat.postMessage({
+      token: process.env.SLACK_BOT_TOKEN,
+      channel: channelID,
+      blocks: [
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: 'Hello ! I recognized that you are a Skillz user. Nice to meet you, and keep updated about the updates of Skillz app thanks to me'
+          },
+        }
+      ],
+      text: 'Message from Skillz-Slack App'
+    });
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 app.action('button_abc', async ({ ack, body, context }) => {
@@ -174,18 +235,45 @@ const getData = async function () {
   return resJSON
 };
 
+const releasesListener = async () => {
+  try {
+    const response = await fetch('/payload', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      }/* ,
+      body: JSON.stringify({
+        title: "title",
+        body: "content."
+      }) */
+    });
+    const data = await response.json();
+    console.log(data);
+  } catch(error) {
+    console.log(error)
+  } 
+  return data
+}
 
-const old = async function () {
+
+/* const old = async function () {
   const res = await octokit.request(`POST /payload`, {
   });
   const resJSON = JSON.parse(res);
-  return resJSON
-};
+  return res
+}; */
 
 (async () => {
   await app.start(process.env.PORT || 3000);
-  const test = slackLookupByEmail("mai-ly.lehoux@zenika.com")
-  try {
+  sendMessagesToAnUser("jean-philippe.baconnais@zenika.com")
+/*   const infosUser = slackLookupByEmail("mai-ly.lehoux@zenika.com");
+  if (infosUser != undefined && infosUser.id != undefined) {
+    console.log(infosUser)
+    postMessage(getChannelID( infosUser.id))
+  } */
+  //const test = releasesListener();
+  //const test = old()
+  /* try {
     //const releaseInfo = await getData();
     //const ui = await old(); 
     //console.log("release : " + releaseTrigger)
@@ -207,7 +295,7 @@ const old = async function () {
 
   } catch (e) {
     console.log('our error', e);
-  }
+  } */
   debugger;
   console.log('⚡️ Bolt app is running!');
 })();
