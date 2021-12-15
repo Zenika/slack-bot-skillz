@@ -12,7 +12,7 @@ module.exports = app;
 
 (async () => {
   await app.start(process.env.PORT || 3000);
-  getUserID("mai-ly.lehoux@zenika.com", app);
+  getUserID("mai-ly.lehoux@zenika.com", app, app.signingSecret);
   homePage(app);
   commandsHandler(app);
   debugger;

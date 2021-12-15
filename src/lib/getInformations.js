@@ -14,14 +14,15 @@ async function getChannelID(userID, app, slackbotToken) {
   }
   return "";
 }
-async function getUserID(email, app) {
+
+async function getUserID(email, app, slackBotToken) {
   try {
     const result = await app.client.users.lookupByEmail({
-      token: process.env.SLACK_BOT_TOKEN,
+      token: slackBotToken,
       email: email,
     });
-    await getChannelID(result.user.id, process.env.SLACK_BOT_TOKEN);
-    return result.user;
+    //await getChannelID(result.user.id, slackBotToken);
+    if (result.ok === true) return result.user;
   } catch (e) {
     console.log(e);
   }
