@@ -29,5 +29,8 @@
   "keywords": [
     "node",
     "express"
-  ]
+  ],
+  "devDependencies": {
+    "prettier": "2.5.1"
+  }
 }
