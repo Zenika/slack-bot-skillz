@@ -2,7 +2,7 @@ const { App } = require("@slack/bolt");
 require("dotenv").config();
 const { commandsHandler } = require("./src/commands");
 const { homePage } = require("./src/home");
-const { getUserID } = require("./src/getInformations");
+const { getUserID } = require("./src/lib/getInformations");
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
