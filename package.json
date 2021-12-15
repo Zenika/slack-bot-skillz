@@ -4,7 +4,8 @@
   "description": "basic bot for Skillz app",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "test": "jest"
   },
   "dependencies": {
     "@octokit/auth-oauth-device": "^3.1.2",
@@ -29,5 +30,9 @@
   "keywords": [
     "node",
     "express"
-  ]
+  ],
+  "devDependencies": {
+    "jest": "^27.4.5",
+    "prettier": "2.5.1"
+  }
 }
