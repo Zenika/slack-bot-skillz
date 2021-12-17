@@ -1,4 +1,4 @@
-const { getChannelID, getUserID } = require("./getInformations");
+const { getChannelID, getUserID } = require("./getSlackInformations");
 
 const myAppClientConversationIsOk = {
   client: {

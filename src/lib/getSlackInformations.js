@@ -1,6 +1,7 @@
 const { postMessage } = require("./postMessages");
 
 async function getChannelID(userID, app, slackbotToken) {
+  console.log(userID);
   try {
     const result = await app.client.conversations.open({
       token: slackbotToken,
@@ -22,7 +23,7 @@ async function getUserID(email, app, slackBotToken) {
       email: email,
     });
     //await getChannelID(result.user.id, slackBotToken);
-    if (result.ok === true) return result.user;
+    if (result.ok === true) return result.user.id;
   } catch (e) {
     console.log(e);
   }
