@@ -1,14 +1,14 @@
-async function postMessage(channelID, app) {
+async function postMessage(channelID, message, app, slackBotToken) {
   try {
-    const result = await app.client.chat.postMessage({
-      token: process.env.SLACK_BOT_TOKEN,
+    await app.client.chat.postMessage({
+      token: slackBotToken,
       channel: channelID,
       blocks: [
         {
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "Hello ! I recognized that you are a Skillz user. Nice to meet you, and keep updated about the updates of Skillz app thanks to me",
+            text: message,
           },
         },
       ],
