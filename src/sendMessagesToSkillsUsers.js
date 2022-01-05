@@ -4,7 +4,7 @@ const { postMessage } = require("./lib/postMessages");
 
 async function sendWelcomeMessage(app, slackBotToken) {
   const response = await getRequest(
-    "http://localhost:8080/api/rest/get-all-users"
+    "http://localhost:8080/api/rest/get-users-infos"
   );
   let userID;
   let channelID;

@@ -15,7 +15,7 @@ async function postMessage(channelID, message, app, slackBotToken) {
       text: "Message from Skillz-Slack App",
     });
   } catch (e) {
-    console.log(e);
+    console.error("error", e);
   }
 }
 module.exports.postMessage = postMessage;

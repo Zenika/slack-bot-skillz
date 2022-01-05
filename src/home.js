@@ -38,7 +38,7 @@ module.exports = {
           },
         });
       } catch (error) {
-        console.error(error);
+        console.error("error", error);
       }
     });
   },
