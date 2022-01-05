@@ -16,7 +16,7 @@ module.exports = app;
   await app.start(process.env.PORT || 4000);
   //getUserID("mai-ly.lehoux@zenika.com", app, app.signingSecret);
   //getRequest("http://localhost:8080/api/rest/get-all-users");
-  //sendWelcomeMessage(app, app.token);
+  sendWelcomeMessage(app, app.token);
   homePage(app);
   commandsHandler(app);
   debugger;

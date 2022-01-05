@@ -1,6 +1,7 @@
 const { getRequest } = require("./lib/getRequest");
 const { getChannelID, getUserID } = require("./lib/getSlackInformations");
 const { postMessage } = require("./lib/postMessages");
+const { scheduledMessage } = require("./lib/scheduledMessage");
 
 async function sendWelcomeMessage(app, slackBotToken) {
   const response = await getRequest(
@@ -17,12 +18,13 @@ async function sendWelcomeMessage(app, slackBotToken) {
       continue;
     if ((channelID = await getChannelID(userID, app, slackBotToken)) === "")
       continue;
-    postMessage(
+    /* postMessage(
       channelID,
       "Ceci est un message pour tous les inscrits de Skillz !",
       app,
       slackBotToken
-    );
+    ); */
+    scheduledMessage(channelID, "ScheduledMessage", app)
   }
 }
 
