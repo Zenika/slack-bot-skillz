@@ -36,7 +36,7 @@ module.exports = {
           text: "Reponse from Skillz App",
         });
       }
-      else {
+      else if (responseCommand !== "") {
         await app.client.chat.postMessage({
           token: context.botToken,
           channel: payload.channel_id,
@@ -56,6 +56,43 @@ module.exports = {
               text: {
                 type: "mrkdwn",
                 text: responseCommand,
+              },
+            },
+            {
+              type: "section",
+              text: {
+                type: "mrkdwn",
+                text: "\n",
+              },
+            },
+            {
+              type: "divider",
+            },
+          ],
+          // Text in the notification
+          text: "Reponse from Skillz App",
+        });
+      }
+      else {
+        await app.client.chat.postMessage({
+          token: context.botToken,
+          channel: payload.channel_id,
+          blocks: [
+            {
+              type: "section",
+              text: {
+                type: "mrkdwn",
+                text: "*Sorry* :sweat:",
+              },
+            },
+            {
+              type: "divider",
+            },
+            {
+              type: "section",
+              text: {
+                type: "mrkdwn",
+                text: "Nobody like this topic at this agency",
               },
             },
             {

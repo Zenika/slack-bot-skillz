@@ -4,13 +4,13 @@ const { postMessage } = require("./lib/postMessages");
 const { scheduledMessage } = require("./lib/scheduledMessage");
 
 async function sendWelcomeMessage(app, slackBotToken) {
-  const response = await getRequest(
+/*   const response = await getRequest(
     "https://staging.hasura.skillz.zenika.com/api/rest/get-user-infos-agency-topics"
-  );
+  ); */
   let userID;
   let channelID;
 
-  for (let i = 0; i < response.User.length; i++) {
+/*   for (let i = 0; i < response.User.length; i++) {
     //if for testing
     if (response.User[i].email === "mai-ly.lehoux@zenika.com") {
     if (
@@ -28,7 +28,7 @@ async function sendWelcomeMessage(app, slackBotToken) {
     );
     }
     //scheduledMessage(channelID, "ScheduledMessage", app)
-  }
+  } */
 }
 
 module.exports.sendWelcomeMessage = sendWelcomeMessage;
