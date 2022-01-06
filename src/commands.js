@@ -5,10 +5,7 @@ module.exports = {
     app.command("/bytopic", async ({ ack, payload, context, body }) => {
       await ack();
       try {
-        const response = await getRequest(
-          "https://staging.hasura.skillz.zenika.com/api/rest/get-user-infos-agency-topics"
-        );
-        const responseCommand = await responseCommandByTopic(body.text, response);
+        const responseCommand = await responseCommandByTopic(body.text);
         if (responseCommand === "fail") {
           await app.client.chat.postMessage({
           token: context.botToken,
@@ -30,6 +27,9 @@ module.exports = {
                 type: "mrkdwn",
                 text: ":bulb: *Use this command like this* : _/bytopic [topic] [city]_ \n\n :clipboard: _Topic_ available : Frontend, Backend, Agilité, Maker, Réseau, Web, Security, Microservices, Network, Ops, Devops, IA, Data, Mobile \n :globe_with_meridians: _City_ available : Paris, Nantes, Singapore, Bordeaux, Brest, Montreal, Grenoble, Lyon, Rennes, Lille",
               },
+            },
+            {
+              type: "divider",
             },
           ],
           // Text in the notification
@@ -57,6 +57,16 @@ module.exports = {
                 type: "mrkdwn",
                 text: responseCommand,
               },
+            },
+            {
+              type: "section",
+              text: {
+                type: "mrkdwn",
+                text: "\n",
+              },
+            },
+            {
+              type: "divider",
             },
           ],
           // Text in the notification
