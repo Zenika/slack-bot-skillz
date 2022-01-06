@@ -5,9 +5,8 @@ async function verifyTopicIsGiven(text) {
   let topic = "";
   try {
     const response = await getRequest(
-      "http://localhost:8080/api/rest/get-all-topics"
+      "https://staging.hasura.skillz.zenika.com/api/rest/get-all-topics"
     );
-
     for (let i = 0; i < response.Topic.length; i++) {
       if (
         (topic = getSpecificArgument(response.Topic[i].name, text)) !== "" &&

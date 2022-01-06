@@ -5,26 +5,29 @@ const { scheduledMessage } = require("./lib/scheduledMessage");
 
 async function sendWelcomeMessage(app, slackBotToken) {
   const response = await getRequest(
-    "http://localhost:8080/api/rest/get-users-infos"
+    "https://staging.hasura.skillz.zenika.com/api/rest/get-user-infos-agency-topics"
   );
   let userID;
   let channelID;
 
   for (let i = 0; i < response.User.length; i++) {
+    //if for testing
+    if (response.User[i].email === "mai-ly.lehoux@zenika.com") {
     if (
       (userID = await getUserID(response.User[i].email, app, slackBotToken)) ===
       ""
     )
       continue;
     if ((channelID = await getChannelID(userID, app, slackBotToken)) === "")
-      continue;
-    /* postMessage(
+      continue;    
+    postMessage(
       channelID,
       "Ceci est un message pour tous les inscrits de Skillz !",
       app,
       slackBotToken
-    ); */
-    scheduledMessage(channelID, "ScheduledMessage", app)
+    );
+    }
+    //scheduledMessage(channelID, "ScheduledMessage", app)
   }
 }
 

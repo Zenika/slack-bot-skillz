@@ -1,5 +1,5 @@
 const fetch = require("node-fetch");
-
+require("dotenv").config();
 class HTTPResponseError extends Error {
   constructor(response, ...args) {
     super(
@@ -19,7 +19,7 @@ async function getRequest(url) {
   const options = {
     headers: {
       "Content-Type": "application/json",
-      "x-hasura-admin-secret": "key",
+      "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET,
     },
     method: "GET",
   };

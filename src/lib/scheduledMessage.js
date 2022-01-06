@@ -1,12 +1,12 @@
-async function scheduledMessage(channelID, message, app) {
-    const nextmonth = new Date();
+async function scheduledMessage(channelID, message, app, date) {
+/*     const nextmonth = new Date();
     nextmonth.setDate(nextmonth.getDate() + 30);
-    nextmonth.setHours(10, 0, 0);
+    nextmonth.setHours(10, 0, 0); */
     try {
         await app.client.chat.scheduleMessage({
             token: app.token,
             channel: channelID,
-            post_at: next_month()/1000,
+            post_at: date()/1000,
             blocks: [
               {
                 type: "section",
@@ -16,7 +16,7 @@ async function scheduledMessage(channelID, message, app) {
                 },
               },
             ],
-            text: "Reminder to note a Skillz skill",
+            text: "Reminder from Skillz app",
           });
     }
     catch(e) {

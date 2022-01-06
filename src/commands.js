@@ -6,7 +6,7 @@ module.exports = {
       await ack();
       try {
         const response = await getRequest(
-          "http://localhost:8080/api/rest/get-users-topics-and-agency"
+          "https://staging.hasura.skillz.zenika.com/api/rest/get-user-infos-agency-topics"
         );
         const responseCommand = await responseCommandByTopic(body.text, response);
         if (responseCommand === "fail") {
