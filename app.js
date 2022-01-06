@@ -5,6 +5,7 @@ const { homePage } = require("./src/home");
 const { getUserID } = require("./src/lib/getSlackInformations");
 const { getRequest } = require("./src/lib/getRequest");
 const { sendWelcomeMessage } = require("./src/sendMessagesToSkillsUsers");
+const {reminderNoteSkillz} = require("./src/reminderNoteSkillz")
 
 const app = new App({
   token: process.env.SLACK_BOT_TOKEN,
@@ -16,6 +17,7 @@ module.exports = app;
   await app.start(process.env.PORT || 4000);
   //getUserID("mai-ly.lehoux@zenika.com", app, app.signingSecret);
   //getRequest("http://localhost:8080/api/rest/get-all-users");
+  reminderNoteSkillz();
   sendWelcomeMessage(app, app.token);
   homePage(app);
   commandsHandler(app);
