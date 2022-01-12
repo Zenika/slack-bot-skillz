@@ -94,6 +94,7 @@ module.exports = {
     app.action("update_view", async ({ ack, body, context, say }) => {
       await ack();
       try {
+        console.log(body);
         const result = await app.client.views.update({
           view_id: body.view.id,
           // Pass the current hash to avoid race conditions

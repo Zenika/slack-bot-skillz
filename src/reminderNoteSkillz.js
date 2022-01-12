@@ -1,4 +1,4 @@
-const { getLastDateToEPOCH } = require("./lib/getLastDateToEPOCH");
+/* const { getLastDateToEPOCH } = require("./lib/getLastDateToEPOCH");
 const { scheduledMessage } = require("./lib/scheduledMessage");
 const { getRequest } = require("./lib/getRequest");
 
@@ -23,4 +23,4 @@ async function reminderNoteSkillz() {
   }
 }
 
-module.exports.reminderNoteSkillz = reminderNoteSkillz;
+module.exports.reminderNoteSkillz = reminderNoteSkillz; */
