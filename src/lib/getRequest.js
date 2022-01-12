@@ -1,5 +1,4 @@
 const fetch = require("node-fetch");
-require("dotenv").config();
 class HTTPResponseError extends Error {
   constructor(response, ...args) {
     super(
