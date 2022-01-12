@@ -55,7 +55,16 @@ jobs:
             - v1-packaging-dependencies-{{ checksum "package-lock.json" }}
             - v1-packaging-dependencies-
       - run:
+          name: Package
+          command: |
+            mkdir deploy
+            cp -r src deploy
+            cp -r app.js deploy
+            cp package.json deploy
+            cp package-lock.json deploy
+      - run:
           name: Deploy
+          working_directory: deploy
           command: |
             git config --global user.email "dsi@zenika.com"
             git config --global user.name "Zenika"
