@@ -1,4 +1,4 @@
-const { App, ExpressReceiver } = require("@slack/bolt");
+const { App, ExpressReceiver, LogLevel } = require("@slack/bolt");
 const express = require("express");
 const { commandsHandler } = require("./src/commands");
 const { homePage } = require("./src/home");
@@ -16,6 +16,7 @@ const receiver = new ExpressReceiver({
 });
 const boltApp = new App({
   token: process.env.SLACK_BOT_TOKEN,
+  logLevel: LogLevel.DEBUG,
   receiver,
 });
 module.exports = boltApp;
