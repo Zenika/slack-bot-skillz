@@ -56,7 +56,6 @@ jobs:
             - v1-packaging-dependencies-
       - run:
           name: Deploy
-          working_directory: deploy
           command: |
             git config --global user.email "dsi@zenika.com"
             git config --global user.name "Zenika"
