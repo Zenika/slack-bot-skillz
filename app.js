@@ -1,4 +1,4 @@
-const http = require('http');
+const http = require("http");
 const { App } = require("@slack/bolt");
 const { commandsHandler } = require("./src/commands");
 const { homePage } = require("./src/home");
@@ -31,8 +31,8 @@ const slackPort = process.env.SLACK_PORT || 4000;
   const server = http.createServer((req, res) => {
     res.end();
   });
-  server.on('clientError', (err, socket) => {
-    socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
+  server.on("clientError", (err, socket) => {
+    socket.end("HTTP/1.1 400 Bad Request\r\n\r\n");
   });
   server.listen(port);
 })();
