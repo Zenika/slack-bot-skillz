@@ -45,6 +45,9 @@ jobs:
           command: npm run test
   deploy:
     executor: node
+    parameters:
+      clever-app-id:
+        type: string
     steps:
       - checkout
       - restore_cache:
