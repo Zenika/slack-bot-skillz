@@ -1,0 +1,86 @@
+version: 2.1
+
+executors:
+  node:
+    docker:
+      - image: cimg/node:16.13.0
+
+jobs:
+  install-dependencies:
+    executor: node
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-packaging-dependencies-{{ checksum "package-lock.json" }}
+            - v1-packaging-dependencies-
+      - run:
+          name: install-dependencies
+          command: npm ci
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-packaging-dependencies-{{ checksum "package-lock.json" }}
+  prettier:
+    executor: node
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-packaging-dependencies-{{ checksum "package-lock.json" }}
+            - v1-packaging-dependencies-
+      - run:
+          name: prettier
+          command: npm run prettier:check
+  tests:
+    executor: node
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-packaging-dependencies-{{ checksum "package-lock.json" }}
+            - v1-packaging-dependencies-
+      - run:
+          name: tests
+          command: npm run test
+  deploy:
+    executor: node
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-packaging-dependencies-{{ checksum "package-lock.json" }}
+            - v1-packaging-dependencies-
+      - run:
+          name: Deploy
+          working_directory: deploy
+          command: |
+            git config --global user.email "dsi@zenika.com"
+            git config --global user.name "Zenika"
+            git init
+            git add .
+            git commit -m "deploy!"
+            sudo npm install --global clever-tools
+            clever login --secret=$CLEVER_SECRET --token=$CLEVER_TOKEN
+            clever link << parameters.clever-app-id >>
+            clever deploy --force
+workflows:
+  qc-test-deploy-staging:
+    jobs:
+      - install-dependencies
+      - prettier:
+          requires:
+            - install-dependencies
+      - tests:
+          requires:
+            - install-dependencies
+      - deploy:
+          name: deploy-staging
+          requires:
+            - prettier
+            - tests
+          clever-app-id: app_f3ae1d9d-d9ad-4ce3-a019-d18a99e5c73a
+          context: clever-cloud2-zenika-dev
+          # filters: &deploy-staging-filters
+          #   branches:
+          #     only: main

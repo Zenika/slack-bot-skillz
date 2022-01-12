@@ -1,5 +1,4 @@
 const { App } = require("@slack/bolt");
-require("dotenv").config();
 const { commandsHandler } = require("./src/commands");
 const { homePage } = require("./src/home");
 const { getUserID } = require("./src/lib/getSlackInformations");
