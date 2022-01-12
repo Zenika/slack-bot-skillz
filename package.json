@@ -4,8 +4,12 @@
   "description": "basic bot for Skillz app",
   "main": "app.js",
   "scripts": {
+    "dev": "node -r dotenv/config app.js",
     "start": "node app.js",
-    "test": "jest"
+    "test": "jest",
+    "prettier": "prettier *.json *.js \"src/**/*.{js,jsx,ts,tsx}\" \".circleci/config.yml\"",
+    "prettier:check": "npm run prettier -- --check",
+    "prettier:write": "npm run prettier -- --write"
   },
   "dependencies": {
     "@octokit/auth-oauth-device": "^3.1.2",
@@ -21,7 +25,7 @@
     "request-promise": "^4.2.6"
   },
   "engines": {
-    "node": "11.x"
+    "node": "16.x"
   },
   "repository": {
     "url": "https://glitch.com/edit/#!/bolt-app-template"

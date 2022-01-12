@@ -5,7 +5,7 @@ async function verifyTopicIsGiven(text) {
   let topic = "";
   try {
     const response = await getRequest(
-      "https://staging.hasura.skillz.zenika.com/api/rest/get-all-topics"
+      `${process.env.HASURA_BASE_URL}/api/rest/get-all-topics`
     );
     for (let i = 0; i < response.Topic.length; i++) {
       if (

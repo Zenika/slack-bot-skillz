@@ -5,7 +5,7 @@ const { scheduledMessage } = require("./lib/scheduledMessage");
 
 async function sendWelcomeMessage(app, slackBotToken) {
   const response = await getRequest(
-    "https://staging.hasura.skillz.zenika.com/api/rest/get-user-infos-agency-topics"
+    `${process.env.HASURA_BASE_URL}/api/rest/get-user-infos-agency-topics`
   );
   let userID;
   let channelID;

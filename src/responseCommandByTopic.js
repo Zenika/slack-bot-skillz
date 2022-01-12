@@ -9,7 +9,7 @@ async function responseCommandByTopic(text) {
   if (topic === "") return "fail";
 
   const response = await getRequest(
-    `https://staging.hasura.skillz.zenika.com/api/rest/get-users-by-agency-and-topics?agency=${agency}&topic=${topic}`
+    `${process.env.HASURA_BASE_URL}/api/rest/get-users-by-agency-and-topics?agency=${agency}&topic=${topic}`
   );
   for (let i = 0; i < response.User.length; i++) {
     names =
