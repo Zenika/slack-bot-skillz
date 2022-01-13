@@ -1,3 +1,5 @@
+//send a message at a specific date
+
 async function scheduledMessage(channelID, message, app, date) {
   /*     const nextmonth = new Date();
     nextmonth.setDate(nextmonth.getDate() + 30);

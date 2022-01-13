@@ -1,15 +1,17 @@
-const { verifyAgencyIsGiven } = require("./lib/verifyAgencyIsGiven");
-const { verifyTopicIsGiven } = require("./lib/verifyTopicIsGiven");
-const { getRequest } = require("./lib/getRequest");
-async function responseCommandByTopic(text) {
+const { verifyAgencyIsGiven } = require("../../lib/utils/verifyAgencyIsGiven");
+const { verifyTopicIsGiven } = require("../../lib/utils/verifyTopicIsGiven");
+const { request } = require("../../lib/utils/request");
+
+async function responseByTopic(text) {
   let names = "";
   let agency = await verifyAgencyIsGiven(text);
   if (agency === "") return "fail";
   let topic = await verifyTopicIsGiven(text);
   if (topic === "") return "fail";
 
-  const response = await getRequest(
-    `${process.env.HASURA_BASE_URL}/api/rest/get-users-by-agency-and-topics?agency=${agency}&topic=${topic}`
+  const response = await request(
+    `${process.env.HASURA_BASE_URL}/api/rest/get-users-by-agency-and-topics?agency=${agency}&topic=${topic}`,
+    "GET"
   );
   for (let i = 0; i < response.User.length; i++) {
     names =
@@ -19,4 +21,4 @@ async function responseCommandByTopic(text) {
   return names;
 }
 
-module.exports.responseCommandByTopic = responseCommandByTopic;
+module.exports.responseByTopic = responseByTopic;

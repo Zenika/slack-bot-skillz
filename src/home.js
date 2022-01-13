@@ -1,6 +1,6 @@
 module.exports = {
   homePage(app) {
-    app.event("app_home_opened", async ({ event, client, context }) => {
+    app.event("app_home_opened", async ({ event, client, payload }) => {
       try {
         const result = await client.views.publish({
           user_id: event.user,
@@ -24,7 +24,7 @@ module.exports = {
                 type: "section",
                 text: {
                   type: "mrkdwn",
-                  text: "*The bot will help you keep your Skillz profile up to date and know easily the preferred topics of others :technologist:*\n",
+                  text: "*The bot will help you to keep your Skillz profile up to date and know easily the preferred topics of the others Skillz users :technologist:*\n",
                 },
               },
               {

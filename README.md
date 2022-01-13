@@ -14,4 +14,4 @@ Create an file named `.env`, then find variables thanks to the documentation : h
 
 ### Launch the app
 
-`npm start`
+`npm run dev`

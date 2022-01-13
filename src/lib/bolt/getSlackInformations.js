@@ -1,5 +1,3 @@
-const { postMessage } = require("./postMessages");
-
 async function getChannelID(userID, app, slackbotToken) {
   try {
     const result = await app.client.conversations.open({
@@ -21,7 +19,6 @@ async function getUserID(email, app, slackBotToken) {
       token: slackBotToken,
       email: email,
     });
-    //await getChannelID(result.user.id, slackBotToken);
     if (result.ok === true) return result.user.id;
   } catch (e) {
     console.error("error", e);
@@ -29,5 +26,18 @@ async function getUserID(email, app, slackBotToken) {
   return "";
 }
 
+async function getUserEmail(userID, app, slackBotToken) {
+  try {
+    const result = await app.client.users.profile.get({
+      token: slackBotToken,
+      user: userID,
+    });
+    if (result.ok === true) return result.profile.email;
+  } catch (e) {
+    console.error("error", e);
+  }
+}
+
 module.exports.getChannelID = getChannelID;
 module.exports.getUserID = getUserID;
+module.exports.getUserEmail = getUserEmail;

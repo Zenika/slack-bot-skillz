@@ -1,11 +1,9 @@
 const { App, ExpressReceiver, LogLevel } = require("@slack/bolt");
 const { homePage } = require("./src/home");
-const { commandsHandler } = require("./src/commands");
-const { getUserID } = require("./src/lib/getSlackInformations");
-const { getRequest } = require("./src/lib/getRequest");
-const { sendWelcomeMessage } = require("./src/sendMessagesToSkillsUsers");
-const { reminderNoteSkillz } = require("./src/reminderNoteSkillz");
-const { actionsHandler } = require("./src/actions");
+const { commandsHandler } = require("./src/commands/commandsHandler");
+const { actionsHandler } = require("./src/actions/actionsHandler");
+const { viewHandler } = require("./src/views/viewHandler");
+const { monthlyCron } = require("./src/cron/monthlyCron");
 
 // Create a Bolt Receiver
 const receiver = new ExpressReceiver({
@@ -36,6 +34,8 @@ app.event("message", async ({ event, client }) => {
   homePage(app);
   actionsHandler(app);
   commandsHandler(app);
+  viewHandler(app);
+  monthlyCron(app);
   await app.start({ port: process.env.PORT });
   console.log("⚡️ Skillz-Bot started");
 })();
