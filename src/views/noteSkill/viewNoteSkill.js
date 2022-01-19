@@ -1,15 +1,12 @@
-const { getUserEmail } = require("../lib/bolt/getSlackInformations")
-const { request } = require("../lib/utils/request")
+const { getUserEmail } = require("../../lib/bolt/getSlackInformations")
+const { request } = require("../../lib/utils/request")
 
 module.exports = {
-    noteSkillzHandler(app) {
-        let desireValue = 0;
-        let skillValue = 0;
-
+    viewNoteSkill(app) {
         app.view('noteSkill', async ({ ack, body, view }) => {
             await ack();
-            skillValue = view['state']['values']['skill']['informationModal']['selected_option']['value'];
-            desireValue = view['state']['values']['desire']['informationModal']['selected_option']['value'];
+            const skillValue = view['state']['values']['skill']['informationModal']['selected_option']['value'];
+            const desireValue = view['state']['values']['desire']['informationModal']['selected_option']['value'];
             const user = body['user']['id'];
             try {
                 const userEmail = await getUserEmail(user, app, app.token);

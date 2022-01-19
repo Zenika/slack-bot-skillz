@@ -16,4 +16,4 @@ and find variables thanks to the documentation : https://docs.google.com/documen
 
 ### Launch the app
 
-`npm start`
+`npm run dev`
