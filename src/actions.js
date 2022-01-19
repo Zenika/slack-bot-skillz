@@ -112,7 +112,7 @@ module.exports = {
                 type: "section",
                 text: {
                   type: "mrkdwn",
-                  text: "*Bash*",
+                  text: "*Cloud*",
                 },
               },
               {

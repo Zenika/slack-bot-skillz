@@ -14,13 +14,13 @@ const checkStatus = (response) => {
   else throw new HTTPResponseError(response);
 };
 
-async function getRequest(url) {
+async function request(url, requestType) {
   const options = {
     headers: {
       "Content-Type": "application/json",
       "x-hasura-admin-secret": process.env.HASURA_ADMIN_SECRET,
     },
-    method: "GET",
+    method: requestType,
   };
   const response = await fetch(url, options);
   const myJson = await response.json();
@@ -35,4 +35,4 @@ async function getRequest(url) {
   return myJson;
 }
 
-module.exports.getRequest = getRequest;
+module.exports.request = request;

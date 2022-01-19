@@ -1,11 +1,11 @@
-const { getRequest } = require("./lib/getRequest");
-const { getChannelID, getUserID } = require("./lib/getSlackInformations");
-const { postMessage } = require("./lib/postMessages");
-const { scheduledMessage } = require("./lib/scheduledMessage");
+const { request } = require("./lib/utils/request");
+const { getChannelID, getUserID } = require("./lib/bolt/getSlackInformations");
+const { postMessage } = require("./lib/bolt/postMessages");
 
-async function sendWelcomeMessage(app, slackBotToken) {
-  const response = await getRequest(
-    `${process.env.HASURA_BASE_URL}/api/rest/get-user-infos-agency-topics`
+async function sendMessagesToAllUsers(app, slackBotToken) {
+  const response = await request(
+    `${process.env.HASURA_BASE_URL}/api/rest/get-all-emails`
+    , "GET"
   );
   let userID;
   let channelID;
@@ -30,8 +30,7 @@ async function sendWelcomeMessage(app, slackBotToken) {
         slackBotToken
       );
     }
-    //scheduledMessage(channelID, "ScheduledMessage", app)
   }
 }
 
-module.exports.sendWelcomeMessage = sendWelcomeMessage;
+module.exports.sendMessagesToAllUsers = sendMessagesToAllUsers;

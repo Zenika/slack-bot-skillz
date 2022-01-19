@@ -1,11 +1,11 @@
-const { getRequest } = require("./getRequest");
+const { request } = require("./request");
 const { getSpecificArgument } = require("./getSpecificArgument");
 
 async function verifyAgencyIsGiven(text) {
   let agency = "";
   try {
-    const response = await getRequest(
-      `${process.env.HASURA_BASE_URL}/api/rest/get-all-agencies`
+    const response = await request(
+      `${process.env.HASURA_BASE_URL}/api/rest/get-all-agencies`, "GET"
     );
 
     for (let i = 0; i < response.Agency.length; i++) {

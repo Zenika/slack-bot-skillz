@@ -1,8 +1,7 @@
-const { getRequest } = require("./lib/getRequest");
 const { responseCommandByTopic } = require("./responseCommandByTopic");
 module.exports = {
   commandsHandler(app) {
-    app.command("/bytopic", async ({ ack, payload, context, body }) => {
+    app.command("/bytopiclocal", async ({ ack, payload, context, body }) => {
       await ack();
       try {
         const responseCommand = await responseCommandByTopic(body.text);
@@ -112,7 +111,7 @@ module.exports = {
         console.error("error", error);
       }
     });
-    app.command("/test", async ({ ack, payload, context, logger }) => {
+    app.command("/testlocal", async ({ ack, payload, context, logger }) => {
       // Acknowledge the command request
       try {
         await ack();

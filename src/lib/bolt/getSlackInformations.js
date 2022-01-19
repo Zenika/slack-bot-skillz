@@ -1,5 +1,3 @@
-const { postMessage } = require("./postMessages");
-
 async function getChannelID(userID, app, slackbotToken) {
   try {
     const result = await app.client.conversations.open({
