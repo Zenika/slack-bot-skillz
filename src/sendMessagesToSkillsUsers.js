@@ -4,8 +4,8 @@ const { postMessage } = require("./lib/bolt/postMessages");
 
 async function sendMessagesToAllUsers(app, slackBotToken) {
   const response = await request(
-    `${process.env.HASURA_BASE_URL}/api/rest/get-all-emails`
-    , "GET"
+    `${process.env.HASURA_BASE_URL}/api/rest/get-all-emails`,
+    "GET"
   );
   let userID;
   let channelID;

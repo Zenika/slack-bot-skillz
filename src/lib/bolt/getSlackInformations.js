@@ -33,8 +33,7 @@ async function getUserEmail(userID, app, slackBotToken) {
       user: userID,
     });
     if (result.ok === true) return result.profile.email;
-  }
-  catch(e) {
+  } catch (e) {
     console.error("error", e);
   }
 }

@@ -5,7 +5,8 @@ async function verifyAgencyIsGiven(text) {
   let agency = "";
   try {
     const response = await request(
-      `${process.env.HASURA_BASE_URL}/api/rest/get-all-agencies`, "GET"
+      `${process.env.HASURA_BASE_URL}/api/rest/get-all-agencies`,
+      "GET"
     );
 
     for (let i = 0; i < response.Agency.length; i++) {

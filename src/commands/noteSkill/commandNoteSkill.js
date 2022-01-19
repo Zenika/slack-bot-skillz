@@ -1,7 +1,7 @@
 module.exports = {
   commandNoteSkill(app) {
     app.command("/testlocal", async ({ ack, payload, context, logger }) => {
-        await ack();
+      await ack();
       // Acknowledge the command request
       try {
         await app.client.chat.postMessage({

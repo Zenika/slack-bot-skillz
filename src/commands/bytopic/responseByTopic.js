@@ -9,7 +9,8 @@ async function responseByTopic(text) {
   if (topic === "") return "fail";
 
   const response = await request(
-    `${process.env.HASURA_BASE_URL}/api/rest/get-users-by-agency-and-topics?agency=${agency}&topic=${topic}`, "GET"
+    `${process.env.HASURA_BASE_URL}/api/rest/get-users-by-agency-and-topics?agency=${agency}&topic=${topic}`,
+    "GET"
   );
   for (let i = 0; i < response.User.length; i++) {
     names =

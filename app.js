@@ -33,7 +33,7 @@ app.event("message", async ({ event, client }) => {
   homePage(app);
   actionsHandler(app);
   commandsHandler(app);
-  viewHandler(app)
+  viewHandler(app);
   await app.start({ port: process.env.PORT });
   console.log("⚡️ Skillz-Bot started");
 })();
