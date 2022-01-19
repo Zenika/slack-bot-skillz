@@ -1,10 +1,10 @@
-const { responseCommandByTopic } = require("./responseCommandByTopic");
+const { responseByTopic } = require("./responseByTopic");
 module.exports = {
-  commandsHandler(app) {
+  commandByTopic(app) {
     app.command("/bytopiclocal", async ({ ack, payload, context, body }) => {
       await ack();
       try {
-        const responseCommand = await responseCommandByTopic(body.text);
+        const responseCommand = await responseByTopic(body.text);
         if (responseCommand === "fail") {
           await app.client.chat.postMessage({
             token: context.botToken,
@@ -109,37 +109,6 @@ module.exports = {
         }
       } catch (error) {
         console.error("error", error);
-      }
-    });
-    app.command("/testlocal", async ({ ack, payload, context, logger }) => {
-      // Acknowledge the command request
-      try {
-        await ack();
-        await app.client.chat.postMessage({
-          token: context.botToken,
-          channel: payload.channel_id,
-          blocks: [
-            {
-              type: "section",
-              text: {
-                type: "mrkdwn",
-                text: "Do you wanna note this skill ?",
-              },
-              accessory: {
-                type: "button",
-                text: {
-                  type: "plain_text",
-                  text: "Let's go !",
-                },
-                action_id: "noteASkill",
-              },
-            },
-          ],
-          // Text in the notification
-          text: "Reponse from Skillz App",
-        });
-      } catch (e) {
-        console.error(e);
       }
     });
   },

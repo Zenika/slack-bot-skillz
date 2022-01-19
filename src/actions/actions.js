@@ -1,6 +1,6 @@
 module.exports = {
   actionsHandler(app) {
-    app.action("noteASkill", async ({ ack, body, context, say }) => {
+    app.action("noteSkill", async ({ ack, body, context }) => {
       await ack();
       try {
         const result = await app.client.views.open({
@@ -9,7 +9,7 @@ module.exports = {
           view: {
             type: "modal",
             // View identifier
-            callback_id: "updateSkillzModal",
+            callback_id: "noteSkill",
             title: {
               type: "plain_text",
               text: "Update your Skillz datas",
@@ -31,9 +31,10 @@ module.exports = {
                   type: "mrkdwn",
                   text: "Knowledge",
                 },
+                block_id: "skill",
                 accessory: {
                   type: "radio_buttons",
-                  action_id: "update_view",
+                  action_id: "informationModal",
                   initial_option: {
                     value: "1",
                     text: {
@@ -80,43 +81,8 @@ module.exports = {
                   ],
                 },
               },
-            ],
-            submit: {
-              type: "plain_text",
-              text: "Submit",
-            },
-          },
-        });
-      } catch (error) {
-        console.error(error);
-      }
-    });
-    app.action("update_view", async ({ ack, body, context, say }) => {
-      await ack();
-      try {
-        console.log(body);
-        const result = await app.client.views.update({
-          view_id: body.view.id,
-          // Pass the current hash to avoid race conditions
-          hash: body.view.hash,
-          view: {
-            type: "modal",
-            // View identifier
-            callback_id: "updateSkillzModal",
-            title: {
-              type: "plain_text",
-              text: "Update your Skillz datas",
-            },
-            blocks: [
               {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: "*Cloud*",
-                },
-              },
-              {
-                type: "divider",
+                type: "divider"
               },
               {
                 type: "section",
@@ -124,9 +90,10 @@ module.exports = {
                   type: "mrkdwn",
                   text: "Desire",
                 },
+              block_id: "desire",
                 accessory: {
                   type: "radio_buttons",
-                  action_id: "update_view",
+                  action_id: "informationModal",
                   initial_option: {
                     value: "1",
                     text: {
@@ -146,7 +113,7 @@ module.exports = {
                       value: "2",
                       text: {
                         type: "plain_text",
-                        text: "2: I prefer to avoir, or only to troubleshoot",
+                        text: "2: I prefer to avoid, or only to troubleshoot",
                       },
                     },
                     {
@@ -184,5 +151,8 @@ module.exports = {
         console.error(error);
       }
     });
+    app.action("informationModal", async ({ ack, body, context, say }) => {
+      await ack();
+    })
   },
 };

@@ -1,8 +1,9 @@
 const { App, ExpressReceiver, LogLevel } = require("@slack/bolt");
 const { homePage } = require("./src/home");
-const { commandsHandler } = require("./src/commands");
+const { commandsHandler } = require("./src/commands/commandsHandler");
 const { request } = require("./src/lib/utils/request");
-const { actionsHandler } = require("./src/actions");
+const { actionsHandler } = require("./src/actions/actions");
+const { noteSkillzHandler } = require("./src/views/noteSkillzHandler");
 
 // Create a Bolt Receiver
 const receiver = new ExpressReceiver({
@@ -33,7 +34,8 @@ app.event("message", async ({ event, client }) => {
   homePage(app);
   actionsHandler(app);
   commandsHandler(app);
-  request("https://staging.hasura.skillz.zenika.com/api/rest/update-skill?email=mai-ly.lehoux@zenika.com&skillId=0ffd1717-d46b-4a76-8dec-548505c18fcb&skillLevel=2&desireLevel=1", "PUT")
+  noteSkillzHandler(app)
+  //request("https://staging.hasura.skillz.zenika.com/api/rest/update-skill?email=mai-ly.lehoux@zenika.com&skillId=0ffd1717-d46b-4a76-8dec-548505c18fcb&skillLevel=2&desireLevel=1", "PUT")
   await app.start({ port: process.env.PORT });
   console.log("⚡️ Skillz-Bot started");
 })();

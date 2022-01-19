@@ -1,7 +1,7 @@
-const { verifyAgencyIsGiven } = require("./lib/utils/verifyAgencyIsGiven");
-const { verifyTopicIsGiven } = require("./lib/utils/verifyTopicIsGiven");
-const { request } = require("./lib/utils/request");
-async function responseCommandByTopic(text) {
+const { verifyAgencyIsGiven } = require("../../lib/utils/verifyAgencyIsGiven");
+const { verifyTopicIsGiven } = require("../../lib/utils/verifyTopicIsGiven");
+const { request } = require("../../lib/utils/request");
+async function responseByTopic(text) {
   let names = "";
   let agency = await verifyAgencyIsGiven(text);
   if (agency === "") return "fail";
@@ -19,4 +19,4 @@ async function responseCommandByTopic(text) {
   return names;
 }
 
-module.exports.responseCommandByTopic = responseCommandByTopic;
+module.exports.responseByTopic = responseByTopic;
