@@ -2,6 +2,7 @@ const { request } = require("./lib/utils/request");
 const { getChannelID, getUserID } = require("./lib/bolt/getSlackInformations");
 const { postMessage } = require("./lib/bolt/postMessages");
 
+//File for testing, it send a message to everyone.
 async function sendMessagesToAllUsers(app, slackBotToken) {
   const response = await request(
     `${process.env.HASURA_BASE_URL}/api/rest/get-all-emails`,

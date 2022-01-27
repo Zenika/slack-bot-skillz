@@ -3,6 +3,7 @@ const { homePage } = require("./src/home");
 const { commandsHandler } = require("./src/commands/commandsHandler");
 const { actionsHandler } = require("./src/actions/actionsHandler");
 const { viewHandler } = require("./src/views/viewHandler");
+const { monthlyCron } = require("./src/monthlyCron");
 
 // Create a Bolt Receiver
 const receiver = new ExpressReceiver({
@@ -34,6 +35,7 @@ app.event("message", async ({ event, client }) => {
   actionsHandler(app);
   commandsHandler(app);
   viewHandler(app);
+  monthlyCron(app);
   await app.start({ port: process.env.PORT });
   console.log("⚡️ Skillz-Bot started");
 })();
