@@ -1,15 +1,19 @@
 const { response } = require("express");
 //const { responseNote } = require("./responseNote")
-const { changeCommandValueForView } = require("../../views/noteSkill/viewNoteSkill")
-const { changeCommandValueForAction } = require("../../actions/noteSkill/actionNoteSkill")
+const {
+  changeCommandValueForView,
+} = require("../../views/noteSkill/viewNoteSkill");
+const {
+  changeCommandValueForAction,
+} = require("../../actions/noteSkill/actionNoteSkill");
 
 module.exports = {
   commandNoteSkill(app) {
     app.command("/note", async ({ ack, payload, context, body }) => {
       await ack();
-      const responseCommand = await changeCommandValueForView(body.text)
+      const responseCommand = await changeCommandValueForView(body.text);
       await changeCommandValueForAction(body.text);
-      
+
       try {
         //const responseCommand = await responseNote(body.text);
         if (responseCommand === "fail") {
@@ -28,32 +32,31 @@ module.exports = {
             // Text in the notification
             text: "Reponse from Skillz App",
           });
-        }
-        else {
-        await app.client.chat.postMessage({
-          token: context.botToken,
-          channel: payload.channel_id,
-          blocks: [
-            {
-              type: "section",
-              text: {
-                type: "mrkdwn",
-                text: "Do you wanna note this skill ?",
-              },
-              accessory: {
-                type: "button",
+        } else {
+          await app.client.chat.postMessage({
+            token: context.botToken,
+            channel: payload.channel_id,
+            blocks: [
+              {
+                type: "section",
                 text: {
-                  type: "plain_text",
-                  text: "Let's go !",
+                  type: "mrkdwn",
+                  text: "Do you wanna note this skill ?",
                 },
-                action_id: "noteSkill",
+                accessory: {
+                  type: "button",
+                  text: {
+                    type: "plain_text",
+                    text: "Let's go !",
+                  },
+                  action_id: "noteSkill",
+                },
               },
-            },
-          ],
-          // Text in the notification
-          text: "Reponse from Skillz App",
-        });
-      }
+            ],
+            // Text in the notification
+            text: "Reponse from Skillz App",
+          });
+        }
       } catch (e) {
         console.error(e);
       }

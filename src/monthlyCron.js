@@ -7,7 +7,7 @@ const {
   getSkillNameAndCategory,
 } = require("./lib/requestsHasura/getSkillNameAndCategory");
 const { postMessageSkillReminder } = require("./messages/messageSkillReminder");
-var cron = require('node-cron');
+var cron = require("node-cron");
 
 function convertDate(date) {
   let newDate = "";
@@ -113,14 +113,12 @@ async function arrayOfDelayedSkillsByUser(app) {
 }
 
 async function monthlyCron(app) {
-
   if (process.env.ENV === "DEV") {
-  cron.schedule('* * * * *', () => {
-    arrayOfDelayedSkillsByUser(app);
-  });
-  }
-  else {
-    cron.schedule('* * * 1 *', () => {
+    cron.schedule("* * * * *", () => {
+      arrayOfDelayedSkillsByUser(app);
+    });
+  } else {
+    cron.schedule("* * * 1 *", () => {
       arrayOfDelayedSkillsByUser(app);
     });
   }

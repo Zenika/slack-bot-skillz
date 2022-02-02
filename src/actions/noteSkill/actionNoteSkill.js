@@ -1,19 +1,21 @@
-const { getAllSkillsNames } = require("../../lib/requestsHasura/getAllSkillsNames")
-const { getSpecificArgument } = require("../../lib/utils/getSpecificArgument")
+const {
+  getAllSkillsNames,
+} = require("../../lib/requestsHasura/getAllSkillsNames");
+const { getSpecificArgument } = require("../../lib/utils/getSpecificArgument");
 
 let skillName = "";
 
 module.exports = {
   async changeCommandValueForAction(command) {
     const allSkills = await getAllSkillsNames();
-  
+
     for (let i = 0; i < allSkills.Skill.length; i++) {
-        if (getSpecificArgument(command, allSkills.Skill[i].name) != "") {
-            skillName = allSkills.Skill[i].name;
-            return skillName
-        }
+      if (getSpecificArgument(command, allSkills.Skill[i].name) != "") {
+        skillName = allSkills.Skill[i].name;
+        return skillName;
+      }
     }
-    return "fail"
+    return "fail";
   },
   actionNoteSkill(app) {
     app.action("noteSkill", async ({ ack, body, context }) => {

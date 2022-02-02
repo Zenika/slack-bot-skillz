@@ -7,27 +7,30 @@ const { postMessage } = require("../../lib/bolt/postMessages");
 const {
   getSkillNameAndCategory,
 } = require("../../lib/requestsHasura/getSkillNameAndCategory");
-const { getAllSkillsNames } = require("../../lib/requestsHasura/getAllSkillsNames")
-const { getSpecificArgument } = require("../../lib/utils/getSpecificArgument")
-const { getSkillCategoryAndIDByName } = require("../../lib/requestsHasura/getSkillCategoryAndIDByName")
+const {
+  getAllSkillsNames,
+} = require("../../lib/requestsHasura/getAllSkillsNames");
+const { getSpecificArgument } = require("../../lib/utils/getSpecificArgument");
+const {
+  getSkillCategoryAndIDByName,
+} = require("../../lib/requestsHasura/getSkillCategoryAndIDByName");
 
 let skillName = "";
 
 module.exports = {
+  async changeCommandValueForView(command) {
+    const allSkills = await getAllSkillsNames();
 
-    async changeCommandValueForView(command) {
-      const allSkills = await getAllSkillsNames();
-    
-      for (let i = 0; i < allSkills.Skill.length; i++) {
-          if (getSpecificArgument(command, allSkills.Skill[i].name) != "") {
-              skillName = allSkills.Skill[i].name;
-              return skillName
-          }
+    for (let i = 0; i < allSkills.Skill.length; i++) {
+      if (getSpecificArgument(command, allSkills.Skill[i].name) != "") {
+        skillName = allSkills.Skill[i].name;
+        return skillName;
       }
-      return "fail"
-    },
+    }
+    return "fail";
+  },
   viewNoteSkill(app) {
-    const skillIDTesting = "0ffd1717-d46b-4a76-8dec-548505c18fcb"; 
+    const skillIDTesting = "0ffd1717-d46b-4a76-8dec-548505c18fcb";
 
     app.view("noteSkill", async ({ ack, body, view }) => {
       await ack();
