@@ -1,6 +1,6 @@
 const { request } = require("../utils/request");
 
-async function getSkillsDateUpdates(email) {
+async function getSkillsDatesUpdates(email) {
   //if (process.env.ENV === "STAGING")
   const response = await request(
     `${process.env.HASURA_BASE_URL}/api/rest/get-last-updated-skills?email=${email}`,
@@ -14,4 +14,4 @@ async function getSkillsDateUpdates(email) {
   return response;
 }
 
-module.exports.getSkillsDateUpdates = getSkillsDateUpdates;
+module.exports.getSkillsDatesUpdates = getSkillsDatesUpdates;

@@ -1,6 +1,6 @@
 const {
-  getSkillsDateUpdates,
-} = require("./lib/requestsHasura/getSkillsLastUpdates");
+  getSkillsDatesUpdates,
+} = require("./lib/requestsHasura/getSkillsDatesUpdates");
 const { getUserID } = require("./lib/bolt/getSlackInformations");
 const { getAllEmails } = require("./lib/requestsHasura/getAllEmails");
 const {
@@ -84,7 +84,7 @@ async function arrayOfDelayedSkillsByUser(app) {
   const usersAllEmails = await getAllEmails();
 
   for (let i = 0; i < usersAllEmails.User.length; i++) {
-    lastUpdates = await getSkillsDateUpdates(usersAllEmails.User[i].email);
+    lastUpdates = await getSkillsDatesUpdates(usersAllEmails.User[i].email);
     for (let j = 0; j < lastUpdates.UserSkillDesire.length; j++) {
       if (
         new Date(
@@ -114,8 +114,8 @@ async function arrayOfDelayedSkillsByUser(app) {
 
 async function monthlyCron(app) {
 
-  if (process.env.ENV === DEV)
-  cron.schedule('* * * * *', () => {
+  if (process.env.ENV === "DEV")
+  cron.schedule('5 * * * *', () => {
     arrayOfDelayedSkillsByUser(app);
   });
   else {
