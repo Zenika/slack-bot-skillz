@@ -100,7 +100,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -191,7 +191,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -282,7 +282,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -373,7 +373,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -464,7 +464,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -534,7 +534,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -607,7 +607,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -680,7 +680,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -750,7 +750,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -820,7 +820,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -890,7 +890,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -943,7 +943,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -996,7 +996,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -1049,7 +1049,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {
@@ -1102,7 +1102,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */[skill_name]* or you can note them via *Skillz app*_",
+              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
             },
           },
           {

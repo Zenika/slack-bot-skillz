@@ -5,7 +5,7 @@ const { getUserID } = require("./lib/bolt/getSlackInformations");
 const { getAllEmails } = require("./lib/requestsHasura/getAllEmails");
 const {
   getSkillNameAndCategory,
-} = require("./lib/requestsHasura/getSkillInfos");
+} = require("./lib/requestsHasura/getSkillNameAndCategory");
 const { postMessageSkillReminder } = require("./messages/messageSkillReminder");
 var cron = require('node-cron');
 
@@ -114,10 +114,11 @@ async function arrayOfDelayedSkillsByUser(app) {
 
 async function monthlyCron(app) {
 
-  if (process.env.ENV === "DEV")
-  cron.schedule('5 * * * *', () => {
+  if (process.env.ENV === "DEV") {
+  cron.schedule('* * * * *', () => {
     arrayOfDelayedSkillsByUser(app);
   });
+  }
   else {
     cron.schedule('* * * 1 *', () => {
       arrayOfDelayedSkillsByUser(app);

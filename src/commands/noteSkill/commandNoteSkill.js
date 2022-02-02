@@ -1,11 +1,15 @@
-const responseNote = require("./responseNote")
+const { response } = require("express");
+//const { responseNote } = require("./responseNote")
+const { changeCommandValueForView } = require("../../views/noteSkill/viewNoteSkill")
+const { changeCommandValueForAction } = require("../../actions/noteSkill/actionNoteSkill")
+
 module.exports = {
   commandNoteSkill(app) {
     app.command("/note", async ({ ack, payload, context, body }) => {
-      const responseCommand = "fail"
       await ack();
-      // Acknowledge the command request
-      //console.log("payload: ", payload.user_id)
+      const responseCommand = await changeCommandValueForView(body.text)
+      await changeCommandValueForAction(body.text);
+      
       try {
         //const responseCommand = await responseNote(body.text);
         if (responseCommand === "fail") {
