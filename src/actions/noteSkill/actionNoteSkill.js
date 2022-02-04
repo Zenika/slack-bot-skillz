@@ -21,7 +21,7 @@ module.exports = {
     app.action("noteSkill", async ({ ack, body, context }) => {
       await ack();
       try {
-        const result = await app.client.views.open({
+        await app.client.views.open({
           trigger_id: body.trigger_id,
           token: context.botToken,
           view: {
@@ -169,7 +169,7 @@ module.exports = {
         console.error(error);
       }
     });
-    app.action("informationModal", async ({ ack, body, context, say }) => {
+    app.action("informationModal", async ({ ack }) => {
       await ack();
     });
   },

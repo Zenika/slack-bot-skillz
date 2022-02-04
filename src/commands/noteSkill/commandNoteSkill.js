@@ -1,5 +1,3 @@
-const { response } = require("express");
-//const { responseNote } = require("./responseNote")
 const {
   changeCommandValueForView,
 } = require("../../views/noteSkill/viewNoteSkill");

@@ -30,8 +30,6 @@ module.exports = {
     return "fail";
   },
   viewNoteSkill(app) {
-    const skillIDTesting = "0ffd1717-d46b-4a76-8dec-548505c18fcb";
-
     app.view("noteSkill", async ({ ack, body, view }) => {
       await ack();
       const skillValue =
@@ -51,7 +49,6 @@ module.exports = {
           "PUT"
         );
         const channelID = await getChannelID(user, app, app.token);
-        //const skillName = await getSkillNameAndCategory(skillIDTesting);
         await postMessage(
           channelID,
           `:tada: You updated your desire and skill level of *${skillName}* :tada:\n\n:bar_chart: Watch the graph of this skill here https://skillz.zenika.com/skills/mine/${skillCategoryAndID.Category.label}`,
