@@ -39,7 +39,7 @@ module.exports = {
                 type: "section",
                 text: {
                   type: "mrkdwn",
-                  text: "Do you wanna note this skill ?",
+                  text: `:memo: Do you wanna note *${responseCommand}* ?`,
                 },
                 accessory: {
                   type: "button",

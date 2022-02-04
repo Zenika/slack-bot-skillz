@@ -8,7 +8,7 @@ async function responseNote(command) {
   let skillName = "";
 
   for (let i = 0; i < allSkills.Skill.length; i++) {
-    if (getSpecificArgument(command, allSkills.Skill[i].name) != "") {
+    if (command.toUpperCase() === allSkills.Skill[i].name.toUpperCase()) {
       skillName = allSkills.Skill[i].name;
       break;
     }

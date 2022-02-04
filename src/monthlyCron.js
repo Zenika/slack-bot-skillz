@@ -8,6 +8,9 @@ const {
 } = require("./lib/requestsHasura/getSkillNameAndCategory");
 const { postMessageSkillReminder } = require("./messages/messageSkillReminder");
 var cron = require("node-cron");
+const {
+  getBotNotifications,
+} = require("./lib/requestsHasura/getBotNotifications");
 
 function convertDate(date) {
   let newDate = "";
@@ -40,7 +43,7 @@ async function sendMessageToRemind(userEmail, arraySkill, app) {
   let arrayPlatforms = [];
   let arrayTechnicsAndMethods = [];
 
-  //if for testing
+  //if for testing : send only one message
   if (userEmail === "mai-ly.lehoux@zenika.com") {
     const userID = await getUserID(userEmail, app, app.token);
     for (let i = 0; i < arraySkill.length; i++) {
@@ -73,7 +76,6 @@ async function sendMessageToRemind(userEmail, arraySkill, app) {
       arrayPlatforms.toString(),
       arrayTechnicsAndMethods.toString()
     );
-    //console.log(arraySkillName);
   }
 }
 
@@ -82,8 +84,15 @@ async function arrayOfDelayedSkillsByUser(app) {
   let lastUpdates = [{}];
   let updatesDelayed = [];
   const usersAllEmails = await getAllEmails();
+  let notificationsUser = [];
 
   for (let i = 0; i < usersAllEmails.User.length; i++) {
+    notificationsUser = await getBotNotifications(usersAllEmails.User[i].email);
+    if (
+      notificationsUser.User &&
+      notificationsUser.User[0].botNotifications === false
+    )
+      continue;
     lastUpdates = await getSkillsDatesUpdates(usersAllEmails.User[i].email);
     for (let j = 0; j < lastUpdates.UserSkillDesire.length; j++) {
       if (

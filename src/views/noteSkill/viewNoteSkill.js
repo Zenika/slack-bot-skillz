@@ -22,7 +22,7 @@ module.exports = {
     const allSkills = await getAllSkillsNames();
 
     for (let i = 0; i < allSkills.Skill.length; i++) {
-      if (getSpecificArgument(command, allSkills.Skill[i].name) != "") {
+      if (command.toUpperCase() === allSkills.Skill[i].name.toUpperCase()) {
         skillName = allSkills.Skill[i].name;
         return skillName;
       }
@@ -51,7 +51,7 @@ module.exports = {
         const channelID = await getChannelID(user, app, app.token);
         await postMessage(
           channelID,
-          `:tada: You updated your desire and skill level of *${skillName}* :tada:\n\n:bar_chart: Watch the graph of this skill here https://skillz.zenika.com/skills/mine/${skillCategoryAndID.Category.label}`,
+          `:tada: You've updated your desire and skill level of *${skillName}* :tada:\n\n:bar_chart: Watch the graph of this skill here https://skillz.zenika.com/skills/mine/${skillCategoryAndID.Category.label}`,
           app,
           app.token
         );

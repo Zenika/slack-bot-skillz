@@ -10,7 +10,7 @@ module.exports = {
     const allSkills = await getAllSkillsNames();
 
     for (let i = 0; i < allSkills.Skill.length; i++) {
-      if (getSpecificArgument(command, allSkills.Skill[i].name) != "") {
+      if (command.toUpperCase() === allSkills.Skill[i].name.toUpperCase()) {
         skillName = allSkills.Skill[i].name;
         return skillName;
       }
