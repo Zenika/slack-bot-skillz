@@ -3,7 +3,7 @@ const { homePage } = require("./src/home");
 const { commandsHandler } = require("./src/commands/commandsHandler");
 const { actionsHandler } = require("./src/actions/actionsHandler");
 const { viewHandler } = require("./src/views/viewHandler");
-const { monthlyCron } = require("./src/monthlyCron");
+const { monthlyCron } = require("./src/cron/monthlyCron");
 
 // Create a Bolt Receiver
 const receiver = new ExpressReceiver({

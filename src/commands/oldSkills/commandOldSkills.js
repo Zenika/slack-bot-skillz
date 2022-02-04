@@ -7,8 +7,8 @@ const {
 const { getUserEmail } = require("../../lib/bolt/getSlackInformations");
 
 module.exports = {
-  commandActivate(app) {
-    app.command("/activate", async ({ ack, payload, context, body }) => {
+  commandOldSkills(app) {
+    app.command("/oldSkills", async ({ ack, payload, context, body }) => {
       await ack();
       const user = body["user_id"];
       try {
@@ -16,7 +16,7 @@ module.exports = {
         const responseCommand = await getBotNotifications(userEmail);
         if (
           responseCommand.User &&
-          responseCommand.User[0].botNotifications === true
+          responseCommand.User[0].botNotifications === false
         ) {
           await app.client.chat.postMessage({
             token: context.botToken,
@@ -36,15 +36,15 @@ module.exports = {
                 type: "section",
                 text: {
                   type: "mrkdwn",
-                  text: ":bulb: *The Skillz reminder is already activate. To desactivate it try * : _/desactivate_",
+                  text: ":bulb: *The Skillz reminder is already desactivate. To activate it try * : _/activate_",
                 },
               },
             ],
             // Text in the notification
-            text: "Reponse of /activate command",
+            text: "Reponse of /desactivate command",
           });
         } else {
-          await setBotNotifications(userEmail, true);
+          await setBotNotifications(userEmail, false);
           await app.client.chat.postMessage({
             token: context.botToken,
             channel: payload.channel_id,
@@ -53,7 +53,7 @@ module.exports = {
                 type: "section",
                 text: {
                   type: "mrkdwn",
-                  text: ":hugging_face: *You've activated my monthly reminders* :hugging_face:",
+                  text: ":hugging_face: *You've desactivated my monthly reminders* :hugging_face:",
                 },
               },
               {
@@ -68,7 +68,7 @@ module.exports = {
               },
             ],
             // Text in the notification
-            text: "Reponse of /activate command",
+            text: "Reponse of /desactivate command",
           });
         }
       } catch (error) {

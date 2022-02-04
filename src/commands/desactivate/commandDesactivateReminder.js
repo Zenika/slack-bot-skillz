@@ -63,7 +63,7 @@ module.exports = {
                 type: "section",
                 text: {
                   type: "mrkdwn",
-                  text: ":bulb: Get a monthly reminder about your skills that have not been updated for more than 1 month. _You can display them right now by running /skills_ :bulb:",
+                  text: ":bulb: Get a monthly reminder about your skills that have not been updated for more than 1 month. _You can display them right now by running /oldSkills_ :bulb:",
                 },
               },
             ],
