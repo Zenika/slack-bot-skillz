@@ -5,7 +5,7 @@ const { getAllEmails } = require("../lib/requestsHasura/getAllEmails");
 const {
   getSkillsDatesUpdates,
 } = require("../lib/requestsHasura/getSkillsDatesUpdates");
-const { sendMessageToRemind } = require("./sendMessageToRemind");
+const { fillSkillsByCategory } = require("./fillSkillsByCategory");
 
 Date.prototype.subDays = function (days) {
   var date = new Date(this.valueOf());
@@ -34,9 +34,7 @@ async function arrayOfDelayedSkillsByUsers(app, email) {
       );
     }
   }
-  if (updatesDelayed.length != 0) {
-    await sendMessageToRemind(email, updatesDelayed, app);
-  }
+  await fillSkillsByCategory(email, updatesDelayed, app, false);
   return updatesDelayed;
 }
 
@@ -70,13 +68,12 @@ async function arrayOfDelayedSkillsByAllUsers(app) {
         );
       }
     }
-    if (updatesDelayed.length != 0) {
-      await sendMessageToRemind(
-        usersAllEmails.User[i].email,
-        updatesDelayed,
-        app
-      );
-    }
+    await fillSkillsByCategory(
+      usersAllEmails.User[i].email,
+      updatesDelayed,
+      app,
+      true
+    );
     updatesDelayed = [];
   }
   return updatesDelayed;

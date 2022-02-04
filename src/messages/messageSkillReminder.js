@@ -5,7 +5,8 @@ async function postMessageSkillReminder(
   arrayLanguagesAndFrameworks,
   arrayTools,
   arrayPlatforms,
-  arrayTechnicsAndMethods
+  arrayTechnicsAndMethods,
+  reminder
 ) {
   if (
     arrayLanguagesAndFrameworks.length > 0 &&
@@ -107,7 +108,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -198,7 +201,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -289,7 +294,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -380,7 +387,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -471,7 +480,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -541,7 +552,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -614,7 +627,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -687,7 +702,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -757,7 +774,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -827,7 +846,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -897,7 +918,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -950,7 +973,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -1003,7 +1028,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -1056,7 +1083,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -1109,7 +1138,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],
@@ -1130,7 +1161,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update some skills since more than 1 month, but I can't find which ones :sweat_smile:*",
+              text: "*:alarm_clock: You are up to date with your skills !*",
             },
           },
           {
@@ -1147,7 +1178,9 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:",
+              text: reminder
+                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
             },
           },
         ],

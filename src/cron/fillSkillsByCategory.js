@@ -6,7 +6,7 @@ const {
   postMessageSkillReminder,
 } = require("../messages/messageSkillReminder");
 
-async function sendMessageToRemind(userEmail, arraySkill, app) {
+async function fillSkillsByCategory(userEmail, arraySkill, app, reminder) {
   let arraySkillName = [];
   let arrayTools = [];
   let arrayLanguagesAndFrameworks = [];
@@ -44,8 +44,9 @@ async function sendMessageToRemind(userEmail, arraySkill, app) {
       arrayLanguagesAndFrameworks.toString(),
       arrayTools.toString(),
       arrayPlatforms.toString(),
-      arrayTechnicsAndMethods.toString()
+      arrayTechnicsAndMethods.toString(),
+      reminder
     );
   }
 }
-module.exports.sendMessageToRemind = sendMessageToRemind;
+module.exports.fillSkillsByCategory = fillSkillsByCategory;

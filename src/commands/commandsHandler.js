@@ -4,6 +4,7 @@ const { commandActivate } = require("./activate/commandActivateReminder");
 const {
   commandDesactivate,
 } = require("./desactivate/commandDesactivateReminder");
+const { commandOldSkills } = require("./oldSkills/commandOldSkills");
 
 module.exports = {
   commandsHandler(app) {
@@ -11,5 +12,6 @@ module.exports = {
     commandByTopic(app);
     commandActivate(app);
     commandDesactivate(app);
+    commandOldSkills(app);
   },
 };
