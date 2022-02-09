@@ -14,6 +14,7 @@ const { getSpecificArgument } = require("../../lib/utils/getSpecificArgument");
 const {
   getSkillCategoryAndIDByName,
 } = require("../../lib/requestsHasura/getSkillCategoryAndIDByName");
+const { setSkillsDesireSkillLevel } = require("../../lib/requestsHasura/setSkillsDesireSkillLevel")
 
 let skillName = "";
 
@@ -44,10 +45,7 @@ module.exports = {
       try {
         const userEmail = await getUserEmail(user, app, app.token);
         const skillCategoryAndID = await getSkillCategoryAndIDByName(skillName);
-        await request(
-          `${process.env.HASURA_BASE_URL}/api/rest/update-skill?email=${userEmail}&skillId=${skillCategoryAndID.id}&skillLevel=${skillValue}&desireLevel=${desireValue}`,
-          "PUT"
-        );
+        setSkillsDesireSkillLevel(userEmail, skillCategoryAndID.id, skillValue, desireValue);
         const channelID = await getChannelID(user, app, app.token);
         await postMessage(
           channelID,

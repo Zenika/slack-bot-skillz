@@ -1,6 +1,7 @@
 const { verifyAgencyIsGiven } = require("../../lib/utils/verifyAgencyIsGiven");
 const { verifyTopicIsGiven } = require("../../lib/utils/verifyTopicIsGiven");
 const { request } = require("../../lib/utils/request");
+
 async function responseByTopic(text) {
   let names = "";
   let agency = await verifyAgencyIsGiven(text);
