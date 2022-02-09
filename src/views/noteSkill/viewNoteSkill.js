@@ -14,7 +14,9 @@ const { getSpecificArgument } = require("../../lib/utils/getSpecificArgument");
 const {
   getSkillCategoryAndIDByName,
 } = require("../../lib/requestsHasura/getSkillCategoryAndIDByName");
-const { setSkillsDesireSkillLevel } = require("../../lib/requestsHasura/setSkillsDesireSkillLevel")
+const {
+  setSkillsDesireSkillLevel,
+} = require("../../lib/requestsHasura/setSkillsDesireSkillLevel");
 
 let skillName = "";
 
@@ -45,7 +47,12 @@ module.exports = {
       try {
         const userEmail = await getUserEmail(user, app, app.token);
         const skillCategoryAndID = await getSkillCategoryAndIDByName(skillName);
-        setSkillsDesireSkillLevel(userEmail, skillCategoryAndID.id, skillValue, desireValue);
+        setSkillsDesireSkillLevel(
+          userEmail,
+          skillCategoryAndID.id,
+          skillValue,
+          desireValue
+        );
         const channelID = await getChannelID(user, app, app.token);
         await postMessage(
           channelID,
