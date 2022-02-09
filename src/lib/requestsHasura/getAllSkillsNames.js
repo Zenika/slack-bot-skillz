@@ -2,7 +2,7 @@ const { request } = require("../utils/request");
 
 async function getAllSkillsNames() {
   const response = await request(
-    "https://staging.hasura.skillz.zenika.com/api/rest/get-all-skills-name",
+    `${process.env.HASURA_BASE_URL}/api/rest/get-all-skills-name`,
     "GET"
   );
   return response;
