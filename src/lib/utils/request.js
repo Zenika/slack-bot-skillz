@@ -31,7 +31,6 @@ async function request(url, requestType) {
     const errorBody = await error.response.text();
     console.error(`Error body: ${errorBody}`);
   }
-  //console.log(myJson)
   return myJson;
 }
 

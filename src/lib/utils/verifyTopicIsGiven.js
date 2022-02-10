@@ -1,13 +1,11 @@
 const { request } = require("./request");
 const { getSpecificArgument } = require("./getSpecificArgument");
+const { getAllTopics } = require("../requestsHasura/getAllTopics")
 
 async function verifyTopicIsGiven(text) {
   let topic = "";
   try {
-    const response = await request(
-      `${process.env.HASURA_BASE_URL}/api/rest/get-all-topics`,
-      "GET"
-    );
+    const response = await getAllTopics();
     for (let i = 0; i < response.Topic.length; i++) {
       if (
         (topic = getSpecificArgument(response.Topic[i].name, text)) !== "" &&
