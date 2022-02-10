@@ -2,6 +2,16 @@ const {
   getAllSkillsNames,
 } = require("../../lib/requestsHasura/getAllSkillsNames");
 const { getSpecificArgument } = require("../../lib/utils/getSpecificArgument");
+const {
+  getSkillsInfosDesireAndSkillByID,
+} = require("../../lib/requestsHasura/getSkillsInfosDesireAndSkillByID");
+const { getUserEmail } = require("../../lib/bolt/getSlackInformations");
+const {
+  getSkillIDByName,
+} = require("../../lib/requestsHasura/getSkillIDByName");
+const {
+  getLastCreatedAtFromSkill,
+} = require("../../lib/utils/getLastCreatedAtFromSkill");
 
 let skillName = "";
 
@@ -20,6 +30,28 @@ module.exports = {
   actionNoteSkill(app) {
     app.action("noteSkill", async ({ ack, body, context }) => {
       await ack();
+      let skillLastDesireValue = 1;
+      let skillLastSkillValue = 1;
+      let newSkill = true;
+      let lastSkillInfos = [];
+      const userEmail = await getUserEmail(
+        body["user"]["id"],
+        app,
+        context.botToken
+      );
+      const skillID = await getSkillIDByName(skillName);
+      const response = await getSkillsInfosDesireAndSkillByID(
+        userEmail,
+        skillID.id
+      );
+      if (response.UserSkillDesire.length > 0) {
+        lastSkillInfos = getLastCreatedAtFromSkill(
+          response.UserSkillDesire[0].Skill.UserSkillDesires
+        );
+        newSkill = false;
+        skillLastDesireValue = lastSkillInfos.desireLevel;
+        skillLastSkillValue = lastSkillInfos.skillLevel;
+      }
       try {
         await app.client.views.open({
           trigger_id: body.trigger_id,
@@ -38,6 +70,15 @@ module.exports = {
                 text: {
                   type: "mrkdwn",
                   text: `*${skillName}*`,
+                },
+              },
+              {
+                type: "section",
+                text: {
+                  type: "mrkdwn",
+                  text: newSkill
+                    ? "_This is the first time that you note this skill_"
+                    : `_Your last notes were *${skillLastSkillValue}/5* as knowledge level and *${skillLastDesireValue}/5* as desire level_`,
                 },
               },
               {
