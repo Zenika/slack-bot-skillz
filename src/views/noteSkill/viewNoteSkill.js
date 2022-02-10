@@ -3,7 +3,7 @@ const {
   getChannelID,
 } = require("../../lib/bolt/getSlackInformations");
 const { request } = require("../../lib/utils/request");
-const { postMessage } = require("../../lib/bolt/postMessages");
+const { postSingleLineMessage } = require("../../messages/postMessages");
 const {
   getSkillNameAndCategory,
 } = require("../../lib/requestsHasura/getSkillNameAndCategory");
@@ -54,7 +54,7 @@ module.exports = {
           desireValue
         );
         const channelID = await getChannelID(user, app, app.token);
-        await postMessage(
+        await postSingleLineMessage(
           channelID,
           `:tada: You've updated your desire and skill level of *${skillName}* :tada:\n\n:bar_chart: Watch the graph of this skill here https://skillz.zenika.com/skills/mine/${skillCategoryAndID.Category.label}`,
           app,
