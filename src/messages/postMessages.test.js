@@ -1,4 +1,4 @@
-const { postMessage } = require("./postMessages");
+const { postSingleLineMessage } = require("./postMessages");
 
 const myAppClientChat = {
   client: {
@@ -14,7 +14,7 @@ const myAppClientChat = {
 
 it("the postMessage fetch fails with an error", async () => {
   try {
-    await postMessage("testID", myAppClientChat, "testToken");
+    await postSingleLineMessage("testID", myAppClientChat, "testToken");
   } catch (e) {
     expect(e).toMatch("error");
   }
