@@ -1,4 +1,4 @@
-async function postMessage(channelID, message, app, slackBotToken) {
+async function postSingleLineMessage(channelID, message, app, slackBotToken) {
   try {
     await app.client.chat.postMessage({
       token: slackBotToken,
@@ -18,4 +18,4 @@ async function postMessage(channelID, message, app, slackBotToken) {
     console.error("error", e);
   }
 }
-module.exports.postMessage = postMessage;
+module.exports.postSingleLineMessage = postSingleLineMessage;
