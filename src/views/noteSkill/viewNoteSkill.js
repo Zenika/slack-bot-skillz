@@ -58,7 +58,8 @@ module.exports = {
           channelID,
           `:tada: You've updated your desire and skill level of *${skillName}* :tada:\n\n:bar_chart: Watch the graph of this skill here https://skillz.zenika.com/skills/mine/${skillCategoryAndID.Category.label}`,
           app,
-          app.token
+          app.token,
+          "Response from /note"
         );
       } catch (e) {
         console.error("error", e);

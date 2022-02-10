@@ -4,6 +4,7 @@ const {
 const {
   changeCommandValueForAction,
 } = require("../../actions/noteSkill/actionNoteSkill");
+const { postSingleLineMessage } = require("../../messages/postMessages");
 
 module.exports = {
   commandNoteSkill(app) {
@@ -13,23 +14,14 @@ module.exports = {
       await changeCommandValueForAction(body.text);
 
       try {
-        //const responseCommand = await responseNote(body.text);
         if (responseCommand === "fail") {
-          await app.client.chat.postMessage({
-            token: context.botToken,
-            channel: payload.channel_id,
-            blocks: [
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: ":sweat: Sorry, this skill does not exists. You can create one trough the Skillz app",
-                },
-              },
-            ],
-            // Text in the notification
-            text: "Reponse from Skillz App",
-          });
+          await postSingleLineMessage(
+            payload.channel_id,
+            ":sweat: Sorry, this skill does not exists. You can create one trough the Skillz app",
+            app,
+            context.botToken,
+            "Response from /note"
+          );
         } else {
           await app.client.chat.postMessage({
             token: context.botToken,
@@ -52,7 +44,7 @@ module.exports = {
               },
             ],
             // Text in the notification
-            text: "Reponse from Skillz App",
+            text: "Response from /note",
           });
         }
       } catch (e) {
