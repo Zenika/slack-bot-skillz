@@ -13,7 +13,6 @@ module.exports = {
       await changeCommandValueForAction(body.text);
 
       try {
-        //const responseCommand = await responseNote(body.text);
         if (responseCommand === "fail") {
           await app.client.chat.postMessage({
             token: context.botToken,
