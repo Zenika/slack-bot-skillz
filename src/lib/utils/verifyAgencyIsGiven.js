@@ -1,6 +1,6 @@
 const { request } = require("./request");
 const { getSpecificArgument } = require("./getSpecificArgument");
-const { getAllAgencies } = require("../requestsHasura/getAllAgencies")
+const { getAllAgencies } = require("../requestsHasura/getAllAgencies");
 
 async function verifyAgencyIsGiven(text) {
   let agency = "";

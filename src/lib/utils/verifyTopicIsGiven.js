@@ -1,6 +1,6 @@
 const { request } = require("./request");
 const { getSpecificArgument } = require("./getSpecificArgument");
-const { getAllTopics } = require("../requestsHasura/getAllTopics")
+const { getAllTopics } = require("../requestsHasura/getAllTopics");
 
 async function verifyTopicIsGiven(text) {
   let topic = "";
