@@ -1,4 +1,6 @@
 const { responseByTopic } = require("./responseByTopic");
+const { postTwoLinesMessage } = require("../../messages/postMessages");
+
 module.exports = {
   commandByTopic(app) {
     app.command("/bytopiclocal", async ({ ack, payload, context, body }) => {
@@ -6,106 +8,32 @@ module.exports = {
       try {
         const responseCommand = await responseByTopic(body.text);
         if (responseCommand === "fail") {
-          await app.client.chat.postMessage({
-            token: context.botToken,
-            channel: payload.channel_id,
-            blocks: [
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: "*Command failed* :sweat:",
-                },
-              },
-              {
-                type: "divider",
-              },
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: ":bulb: *Use this command like this* : _/bytopic [topic] [city]_ \n\n :clipboard: _Topic_ available : Frontend, Backend, Agilité, Maker, Réseau, Web, Security, Microservices, Network, Ops, Devops, IA, Data, Mobile \n :globe_with_meridians: _City_ available : Paris, Nantes, Singapore, Bordeaux, Brest, Montreal, Grenoble, Lyon, Rennes, Lille",
-                },
-              },
-              {
-                type: "divider",
-              },
-            ],
-            // Text in the notification
-            text: "Reponse from Skillz App",
-          });
+          await postTwoLinesMessage(
+            payload.channel_id,
+            "*Command failed* :sweat:",
+            ":bulb: *Use this command like this* : _/bytopic [topic] [city]_ \n\n :clipboard: _Topic_ available : Frontend, Backend, Agilité, Maker, Réseau, Web, Security, Microservices, Network, Ops, Devops, IA, Data, Mobile \n :globe_with_meridians: _City_ available : Paris, Nantes, Singapore, Bordeaux, Brest, Montreal, Grenoble, Lyon, Rennes, Lille",
+            app,
+            context.botToken,
+            "Response from /bytopic command"
+          );
         } else if (responseCommand !== "") {
-          await app.client.chat.postMessage({
-            token: context.botToken,
-            channel: payload.channel_id,
-            blocks: [
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: ":heart: *All these Skillz users at this agency liked this topic* :heart:",
-                },
-              },
-              {
-                type: "divider",
-              },
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: responseCommand,
-                },
-              },
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: "\n",
-                },
-              },
-              {
-                type: "divider",
-              },
-            ],
-            // Text in the notification
-            text: "Reponse from Skillz App",
-          });
+          await postTwoLinesMessage(
+            payload.channel_id,
+            ":heart: *All these Skillz users at this agency liked this topic* :heart:",
+            responseCommand,
+            app,
+            context.botToken,
+            "Response from /bytopic command"
+          );
         } else {
-          await app.client.chat.postMessage({
-            token: context.botToken,
-            channel: payload.channel_id,
-            blocks: [
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: "*Sorry* :sweat:",
-                },
-              },
-              {
-                type: "divider",
-              },
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: "Nobody like this topic at this agency",
-                },
-              },
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: "\n",
-                },
-              },
-              {
-                type: "divider",
-              },
-            ],
-            // Text in the notification
-            text: "Reponse from Skillz App",
-          });
+          await postTwoLinesMessage(
+            payload.channel_id,
+            "*Sorry* :sweat:",
+            "Nobody like this topic at this agency",
+            app,
+            context.botToken,
+            "Response from /bytopic command"
+          );
         }
       } catch (error) {
         console.error("error", error);

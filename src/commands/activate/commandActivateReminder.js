@@ -5,6 +5,7 @@ const {
   setBotNotifications,
 } = require("../../lib/requestsHasura/setBotNotifications");
 const { getUserEmail } = require("../../lib/bolt/getSlackInformations");
+const { postTwoLinesMessage } = require("../../messages/postMessages");
 
 module.exports = {
   commandActivate(app) {
@@ -18,58 +19,24 @@ module.exports = {
           responseCommand.User &&
           responseCommand.User[0].botNotifications === true
         ) {
-          await app.client.chat.postMessage({
-            token: context.botToken,
-            channel: payload.channel_id,
-            blocks: [
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: "*Command failed* :sweat:",
-                },
-              },
-              {
-                type: "divider",
-              },
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: ":bulb: *The Skillz reminder is already activate. To desactivate it try * : _/desactivate_",
-                },
-              },
-            ],
-            // Text in the notification
-            text: "Reponse of /activate command",
-          });
+          await postTwoLinesMessage(
+            payload.channel_id,
+            "*Command failed* :sweat:",
+            ":bulb: *The Skillz reminder is already activate. To desactivate it try * : _/desactivate_",
+            app,
+            context.botToken,
+            "Response from /activate command"
+          );
         } else {
           await setBotNotifications(userEmail, true);
-          await app.client.chat.postMessage({
-            token: context.botToken,
-            channel: payload.channel_id,
-            blocks: [
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: ":hugging_face: *You've activated my monthly reminders* :hugging_face:",
-                },
-              },
-              {
-                type: "divider",
-              },
-              {
-                type: "section",
-                text: {
-                  type: "mrkdwn",
-                  text: ":bulb: Get a monthly reminder about your skills that have not been updated for more than 1 month. _You can display them right now by running /oldSkills_ :bulb:",
-                },
-              },
-            ],
-            // Text in the notification
-            text: "Reponse of /activate command",
-          });
+          await postTwoLinesMessage(
+            payload.channel_id,
+            ":hugging_face: *You've activated my monthly reminders* :hugging_face:",
+            ":bulb: Get a monthly reminder about your skills that have not been updated for more than 1 month. _You can display them right now by running /oldSkills_ :bulb:",
+            app,
+            context.botToken,
+            "Response from /activate command"
+          );
         }
       } catch (error) {
         console.error("error", error);

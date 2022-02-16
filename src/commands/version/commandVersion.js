@@ -6,11 +6,12 @@ module.exports = {
     app.command("/version", async ({ ack, payload, context, body }) => {
       await ack();
       try {
-        postSingleLineMessage(
+        await postSingleLineMessage(
           body["channel_id"],
           `The actual version of this bot is ${pjson.version}`,
           app,
-          context.botToken
+          context.botToken,
+          "Response from /version"
         );
       } catch (e) {
         console.error(e);
