@@ -10,9 +10,7 @@ Start by running
 
 ### Create an env file
 
-Create an file named `.env`, then add these variables
-
-and find variables thanks to the documentation : https://docs.google.com/document/d/1VNHepiCHvmf6mLz2AZmaUNJzSKHFuQS4N2nUNNzKepY/edit#
+Create an file named `.env`, then find variables thanks to the documentation : https://docs.google.com/document/d/1VNHepiCHvmf6mLz2AZmaUNJzSKHFuQS4N2nUNNzKepY/edit#
 
 ### Launch the app
 

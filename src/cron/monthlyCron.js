@@ -7,7 +7,7 @@ async function monthlyCron(app) {
       arrayOfDelayedSkillsByAllUsers(app);
     });
   } else {
-    cron.schedule("* * * 1 *", () => {
+    cron.schedule("0 14 1 * *", () => {
       arrayOfDelayedSkillsByAllUsers(app);
     });
   }

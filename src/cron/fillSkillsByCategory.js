@@ -13,9 +13,8 @@ async function fillSkillsByCategory(userEmail, arraySkill, app, reminder) {
   let arrayPlatforms = [];
   let arrayTechnicsAndMethods = [];
 
-  //if for testing : send only one message
-  if (userEmail === "mai-ly.lehoux@zenika.com") {
-    const userID = await getUserID(userEmail, app, app.token);
+  const userID = await getUserID(userEmail, app, app.token);
+  if (userID.length > 0) {
     for (let i = 0; i < arraySkill.length; i++) {
       arraySkillName = arraySkillName.concat(
         await getSkillNameAndCategory(arraySkill[i])

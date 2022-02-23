@@ -1,7 +1,6 @@
 const {
   getAllSkillsNames,
 } = require("../../lib/requestsHasura/getAllSkillsNames");
-const { getSpecificArgument } = require("../../lib/utils/getSpecificArgument");
 
 async function responseNote(command) {
   const allSkills = await getAllSkillsNames();

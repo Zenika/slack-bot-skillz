@@ -1,4 +1,3 @@
-const { request } = require("../utils/request");
 const { getUserID } = require("./getSlackInformations");
 const { getAllEmails } = require("../requestsHasura/getAllEmails");
 
