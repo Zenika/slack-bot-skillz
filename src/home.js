@@ -1,8 +1,8 @@
 module.exports = {
   homePage(app) {
-    app.event("app_home_opened", async ({ event, client, payload }) => {
+    app.event("app_home_opened", async ({ event, client }) => {
       try {
-        const result = await client.views.publish({
+        await client.views.publish({
           user_id: event.user,
           view: {
             type: "home",
