@@ -2,10 +2,11 @@ const { getUserEmail } = require("../../lib/bolt/getSlackInformations");
 const {
   arrayOfDelayedSkillsByUsers,
 } = require("../../cron/arraysOfDelayedSkills");
+const { switchCommands } = require("../../lib/utils/switchCommands");
 
 module.exports = {
   commandOldSkills(app) {
-    app.command("/oldSkills", async ({ ack, body }) => {
+    app.command(switchCommands("/oldSkills"), async ({ ack, body }) => {
       await ack();
       const user = body["user_id"];
       try {
