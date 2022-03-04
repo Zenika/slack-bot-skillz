@@ -1,3 +1,9 @@
+const {
+  postThreeLinesMessageReminder,
+  postTwoLinesMessageReminder,
+  postOneLineMessageReminder,
+} = require("./postMessages");
+
 async function postMessageSkillReminder(
   channelID,
   app,
@@ -15,107 +21,22 @@ async function postMessageSkillReminder(
     arrayTechnicsAndMethods.length > 0
   ) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Languages and Frameworks*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayLanguagesAndFrameworks,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Tools*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTools,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Platforms*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayPlatforms,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Technics and methods*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTechnicsAndMethods,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postThreeLinesMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Languages and Frameworks*",
+        arrayLanguagesAndFrameworks,
+        "*Tools*",
+        arrayTools,
+        "*Technics and Methods*",
+        arrayTechnicsAndMethods,
+        "Platforms",
+        arrayPlatforms,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
@@ -125,90 +46,20 @@ async function postMessageSkillReminder(
     arrayTechnicsAndMethods.length > 0
   ) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Languages and Frameworks*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayLanguagesAndFrameworks,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Tools*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTools,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Technics and Methods*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTechnicsAndMethods,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postThreeLinesMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Languages and Frameworks*",
+        arrayLanguagesAndFrameworks,
+        "*Tools*",
+        arrayTools,
+        "*Technics and Methods*",
+        arrayTechnicsAndMethods,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
@@ -218,90 +69,20 @@ async function postMessageSkillReminder(
     arrayTechnicsAndMethods.length > 0
   ) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Languages and Frameworks*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayLanguagesAndFrameworks,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Platforms*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayPlatforms,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Technics and Methods*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTechnicsAndMethods,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postThreeLinesMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Languages and Frameworks*",
+        arrayLanguagesAndFrameworks,
+        "*Platforms*",
+        arrayPlatforms,
+        "*Technics and Methods*",
+        arrayTechnicsAndMethods,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
@@ -311,90 +92,20 @@ async function postMessageSkillReminder(
     arrayTechnicsAndMethods.length > 0
   ) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Tools*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTools,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Platforms*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayPlatforms,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Technics and Methods*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTechnicsAndMethods,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postThreeLinesMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Tools*",
+        arrayTools,
+        "*Platforms*",
+        arrayPlatforms,
+        "*Technics and Methods*",
+        arrayTechnicsAndMethods,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
@@ -404,162 +115,37 @@ async function postMessageSkillReminder(
     arrayPlatforms.length > 0
   ) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Languages and Frameworks*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayLanguagesAndFrameworks,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Tools*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTools,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Platforms*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayPlatforms,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postThreeLinesMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Languages and Frameworks*",
+        arrayLanguagesAndFrameworks,
+        "*Tools*",
+        arrayTools,
+        "*Platforms*",
+        arrayPlatforms,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
   } else if (arrayLanguagesAndFrameworks.length > 0 && arrayTools.length > 0) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Languages and Frameworks*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayLanguagesAndFrameworks,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Tools*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTools,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postTwoLinesMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Languages and Frameworks*",
+        arrayLanguagesAndFrameworks,
+        "*Tools*",
+        arrayTools,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
@@ -568,73 +154,18 @@ async function postMessageSkillReminder(
     arrayPlatforms.length > 0
   ) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Languages and Frameworks*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayLanguagesAndFrameworks,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Platforms*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayPlatforms,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postTwoLinesMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Languages and Frameworks*",
+        arrayLanguagesAndFrameworks,
+        "*Platforms*",
+        arrayPlatforms,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
@@ -643,509 +174,129 @@ async function postMessageSkillReminder(
     arrayTechnicsAndMethods.length > 0
   ) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Languages and Frameworks*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayLanguagesAndFrameworks,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Technics and Methods*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTechnicsAndMethods,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postTwoLinesMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Languages and Frameworks*",
+        arrayLanguagesAndFrameworks,
+        "*Technics and Methods*",
+        arrayTechnicsAndMethods,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
   } else if (arrayTools.length > 0 && arrayPlatforms.length > 0) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Tools*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTools,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Platforms*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayPlatforms,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postTwoLinesMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Tools*",
+        arrayTools,
+        "*Platforms*",
+        arrayPlatforms,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
   } else if (arrayTools.length > 0 && arrayTechnicsAndMethods.length > 0) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Tools*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTools,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Technics and Method*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTechnicsAndMethods,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postTwoLinesMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Tools*",
+        arrayTools,
+        "*Technics and Methods*",
+        arrayTechnicsAndMethods,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
   } else if (arrayPlatforms.length > 0 && arrayTechnicsAndMethods.length > 0) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Platforms*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayPlatforms,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Technics and Method*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTechnicsAndMethods,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postTwoLinesMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Platforms*",
+        arrayPlatforms,
+        "*Technics and Methods*",
+        arrayTechnicsAndMethods,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
   } else if (arrayPlatforms.length > 0) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Platforms*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayPlatforms,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postOneLineMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Platforms*",
+        arrayPlatforms,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
   } else if (arrayLanguagesAndFrameworks.length > 0) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Languages and Frameworks*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayLanguagesAndFrameworks,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postOneLineMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Languages and Frameworks*",
+        arrayLanguagesAndFrameworks,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
   } else if (arrayTools.length > 0) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Tools*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTools,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postOneLineMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Tools*",
+        arrayTools,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
   } else if (arrayTechnicsAndMethods.length > 0) {
     try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You didn't update these skills since more than 1 month :*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*Technics and Methods*",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: arrayTechnicsAndMethods,
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
+      await postOneLineMessageReminder(
+        channelID,
+        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        "*Technics and Methods*",
+        arrayTechnicsAndMethods,
+        app,
+        app.botToken,
+        "Skillz Reminder",
+        reminder
+      );
     } catch (e) {
       console.error("error", e);
     }
