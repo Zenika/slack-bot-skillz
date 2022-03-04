@@ -14,10 +14,10 @@ Date.prototype.subDays = function (days) {
 };
 
 async function arrayOfDelayedSkillsByUsers(app, email) {
-  var todayDate = new Date();
   let lastUpdates = [{}];
   let updatesDelayed = [];
 
+  var todayDate = new Date();
   lastUpdates = await getSkillsDatesUpdates(email);
   for (let j = 0; j < lastUpdates.UserSkillDesire.length; j++) {
     if (
@@ -35,6 +35,7 @@ async function arrayOfDelayedSkillsByUsers(app, email) {
     }
   }
   await fillSkillsByCategory(email, updatesDelayed, app, false);
+
   return updatesDelayed;
 }
 
@@ -44,37 +45,56 @@ async function arrayOfDelayedSkillsByAllUsers(app) {
   let updatesDelayed = [];
   const usersAllEmails = await getAllEmails();
   let notificationsUser = [];
+  let beta_user = false;
 
   for (let i = 0; i < usersAllEmails.User.length; i++) {
-    notificationsUser = await getBotNotifications(usersAllEmails.User[i].email);
-    if (
-      notificationsUser.User &&
-      notificationsUser.User[0].botNotifications === false
-    )
-      continue;
-    lastUpdates = await getSkillsDatesUpdates(usersAllEmails.User[i].email);
-    for (let j = 0; j < lastUpdates.UserSkillDesire.length; j++) {
-      if (
-        new Date(
-          lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires[
-            lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires.length - 1
-          ].created_at
-        ) < todayDate.subDays(30)
-      ) {
-        updatesDelayed = updatesDelayed.concat(
-          lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires[
-            lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires.length - 1
-          ].skillId
-        );
+    if (process.env.ENV != "PRODUCTION") {
+      const beta_emails = process.env.BETA_TESTS.split(";");
+      for (let j = 0; j < beta_emails.length; j++) {
+        if (usersAllEmails.User[i].email === beta_emails[j]) {
+          beta_user = true;
+          break;
+        }
       }
     }
-    await fillSkillsByCategory(
-      usersAllEmails.User[i].email,
-      updatesDelayed,
-      app,
-      true
-    );
-    updatesDelayed = [];
+    if (
+      process.env.ENV === "PRODUCTION" ||
+      (process.env.ENV != "PRODUCTION" && beta_user === true)
+    ) {
+      beta_user = false;
+      notificationsUser = await getBotNotifications(
+        usersAllEmails.User[i].email
+      );
+      if (
+        notificationsUser &&
+        notificationsUser.User &&
+        notificationsUser.User[0].botNotifications === false
+      )
+        continue;
+      lastUpdates = await getSkillsDatesUpdates(usersAllEmails.User[i].email);
+      for (let j = 0; j < lastUpdates.UserSkillDesire.length; j++) {
+        if (
+          new Date(
+            lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires[
+              lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires.length - 1
+            ].created_at
+          ) < todayDate.subDays(30)
+        ) {
+          updatesDelayed = updatesDelayed.concat(
+            lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires[
+              lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires.length - 1
+            ].skillId
+          );
+        }
+      }
+      await fillSkillsByCategory(
+        usersAllEmails.User[i].email,
+        updatesDelayed,
+        app,
+        true
+      );
+      updatesDelayed = [];
+    }
   }
   return updatesDelayed;
 }
