@@ -2,57 +2,45 @@ function switchCommands(command) {
   switch (command) {
     case "/bytopic":
       switch (process.env.ENV) {
-        case "DEV":
-          return "/bytopic_d";
-        case "STAGING":
-          return "/bytopic_s";
-        default:
+        case "PRODUCTION":
           return "/bytopic";
+        default:
+          return `/bytopic_${process.env.ENV}`;
       }
     case "/activate":
       switch (process.env.ENV) {
-        case "DEV":
-          return "/activate_d";
-        case "STAGING":
-          return "/activate_s";
-        default:
+        case "PRODUCTION":
           return "/activate";
+        default:
+          return `/activate_${process.env.ENV}`;
       }
     case "/desactivate":
       switch (process.env.ENV) {
-        case "DEV":
-          return "/desactivate_d";
-        case "STAGING":
-          return "/desactivate_s";
-        default:
+        case "PRODUCTION":
           return "/desactivate";
+        default:
+          return `/desactivate_${process.env.ENV}`;
       }
     case "/noteSkill":
       switch (process.env.ENV) {
-        case "DEV":
-          return "/noteSkill_d";
-        case "STAGING":
-          return "/noteSkill_s";
-        default:
+        case "PRODUCTION":
           return "/noteSkill";
+        default:
+          return `/noteSkill_${process.env.ENV}`;
       }
     case "/oldSkills":
       switch (process.env.ENV) {
-        case "DEV":
-          return "/oldSkills_d";
-        case "STAGING":
-          return "/oldSkills_s";
-        default:
+        case "PRODUCTION":
           return "/oldSkills";
+        default:
+          return `/oldSkills_${process.env.ENV}`;
       }
     case "/version":
       switch (process.env.ENV) {
-        case "DEV":
-          return "/version_d";
-        case "STAGING":
-          return "/version_s";
-        default:
+        case "PRODUCTION":
           return "/version";
+        default:
+          return `/version_${process.env.ENV}`;
       }
     default:
       return "not recognized command";
