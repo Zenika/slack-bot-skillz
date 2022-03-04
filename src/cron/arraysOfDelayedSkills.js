@@ -58,7 +58,7 @@ async function arrayOfDelayedSkillsByAllUsers(app) {
       }
     }
     if (
-      process.env.ENV === "PRODUCTION" ||
+      process.env.ENV == "PRODUCTION" ||
       (process.env.ENV != "PRODUCTION" && beta_user === true)
     ) {
       beta_user = false;
