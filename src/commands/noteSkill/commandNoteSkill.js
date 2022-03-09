@@ -10,7 +10,7 @@ const { switchCommands } = require("../../lib/utils/switchCommands");
 module.exports = {
   commandNoteSkill(app) {
     app.command(
-      switchCommands("/note"),
+      switchCommands("/noteSkill"),
       async ({ ack, payload, context, body }) => {
         await ack();
         const responseCommand = await changeCommandValueForView(body.text);
