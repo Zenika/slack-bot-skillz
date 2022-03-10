@@ -4,6 +4,7 @@ const { commandsHandler } = require("./src/commands/commandsHandler");
 const { actionsHandler } = require("./src/actions/actionsHandler");
 const { viewHandler } = require("./src/views/viewHandler");
 const { monthlyCron } = require("./src/cron/monthlyCron");
+const { arrayOfDelayedSkillsByUsers } = require("./src/cron/arraysOfDelayedSkills")
 // Create a Bolt Receiver
 const receiver = new ExpressReceiver({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
@@ -36,5 +37,6 @@ app.event("message", async ({ event, client }) => {
   viewHandler(app);
   await app.start({ port: process.env.PORT });
   await monthlyCron(app);
+  //arrayOfDelayedSkillsByUsers(app, "mai-ly.lehoux@zenika.com")
   console.log("⚡️ Skillz-Bot started");
 })();
