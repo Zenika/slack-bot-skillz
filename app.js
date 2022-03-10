@@ -4,7 +4,9 @@ const { commandsHandler } = require("./src/commands/commandsHandler");
 const { actionsHandler } = require("./src/actions/actionsHandler");
 const { viewHandler } = require("./src/views/viewHandler");
 const { monthlyCron } = require("./src/cron/monthlyCron");
-const { arrayOfDelayedSkillsByUsers } = require("./src/cron/arraysOfDelayedSkills")
+const {
+  arrayOfDelayedSkillsByUsers,
+} = require("./src/cron/arraysOfDelayedSkills");
 // Create a Bolt Receiver
 const receiver = new ExpressReceiver({
   signingSecret: process.env.SLACK_SIGNING_SECRET,

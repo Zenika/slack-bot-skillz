@@ -15,7 +15,6 @@ async function insertOrUpdateSkillLevel(
 
 module.exports.insertOrUpdateSkillLevel = insertOrUpdateSkillLevel;
 
-
 /*async function insertOrUpdateSkillLevel(
   userEmail,
   skillID,

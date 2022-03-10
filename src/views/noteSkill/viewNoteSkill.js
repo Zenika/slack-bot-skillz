@@ -46,7 +46,12 @@ module.exports = {
       try {
         const userEmail = await getUserEmail(user, app, app.token);
         const skillCategoryAndID = await getSkillCategoryAndIDByName(skillName);
-        insertOrUpdateSkillLevel(userEmail, skillValue, desireValue, skillCategoryAndID.id);
+        insertOrUpdateSkillLevel(
+          userEmail,
+          skillValue,
+          desireValue,
+          skillCategoryAndID.id
+        );
         /* setSkillsDesireSkillLevel(
           userEmail,
           skillCategoryAndID.id,
