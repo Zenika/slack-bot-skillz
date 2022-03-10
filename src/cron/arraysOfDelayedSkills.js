@@ -25,7 +25,7 @@ async function arrayOfDelayedSkillsByUsers(app, email) {
         lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires[
           lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires.length - 1
         ].created_at
-      ) < todayDate.subDays(1)
+      ) < todayDate.subDays(30)
     ) {
       updatesDelayed = updatesDelayed.concat(
         lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires[
@@ -78,7 +78,7 @@ async function arrayOfDelayedSkillsByAllUsers(app) {
             lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires[
               lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires.length - 1
             ].created_at
-          ) < todayDate.subDays(1)
+          ) < todayDate.subDays(30)
         ) {
           updatesDelayed = updatesDelayed.concat(
             lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires[
