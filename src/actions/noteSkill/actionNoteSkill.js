@@ -1,7 +1,6 @@
 const {
   getAllSkillsNames,
 } = require("../../lib/requestsHasura/getAllSkillsNames");
-const { getSpecificArgument } = require("../../lib/utils/getSpecificArgument");
 const {
   getSkillsInfosDesireAndSkillByID,
 } = require("../../lib/requestsHasura/getSkillsInfosDesireAndSkillByID");
@@ -39,7 +38,7 @@ module.exports = {
         app,
         context.botToken
       );
-      const skillID = await getSkillIDByName(skillName);
+      const skillID = await getSkillIDByName(encodeURIComponent(skillName));
       const response = await getSkillsInfosDesireAndSkillByID(
         userEmail,
         skillID.id
