@@ -2,6 +2,7 @@ const {
   postThreeLinesMessageReminder,
   postTwoLinesMessageReminder,
   postOneLineMessageReminder,
+  postFourLinesMessageReminder,
 } = require("./postMessages");
 
 async function postMessageSkillReminder(
@@ -21,7 +22,7 @@ async function postMessageSkillReminder(
     arrayTechnicsAndMethods.length > 0
   ) {
     try {
-      await postThreeLinesMessageReminder(
+      await postFourLinesMessageReminder(
         channelID,
         "*:alarm_clock: You didn't update these skills since more than 1 month :*",
         "*Languages and Frameworks*",
@@ -30,7 +31,7 @@ async function postMessageSkillReminder(
         arrayTools,
         "*Technics and Methods*",
         arrayTechnicsAndMethods,
-        "Platforms",
+        "*Platforms*",
         arrayPlatforms,
         app,
         app.botToken,

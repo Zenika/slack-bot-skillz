@@ -175,7 +175,7 @@ async function postFourLinesMessageReminder(
             type: "mrkdwn",
             text: reminder
               ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-              : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
+              : ":bulb: You can have this information monthly. Be sure that you've used the _/activate_ command",
           },
         },
       ],
@@ -279,7 +279,7 @@ async function postThreeLinesMessageReminder(
             type: "mrkdwn",
             text: reminder
               ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-              : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
+              : ":bulb: You can have this information monthly. Be sure that you've used the _/activate_ command",
           },
         },
       ],
@@ -364,7 +364,7 @@ async function postTwoLinesMessageReminder(
             type: "mrkdwn",
             text: reminder
               ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-              : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
+              : ":bulb: You can have this information monthly. Be sure that you've used the _/activate_ command",
           },
         },
       ],
@@ -430,7 +430,7 @@ async function postOneLineMessageReminder(
             type: "mrkdwn",
             text: reminder
               ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-              : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
+              : ":bulb: You can have this information monthly. Be sure that you've used the _/activate_ command",
           },
         },
       ],
