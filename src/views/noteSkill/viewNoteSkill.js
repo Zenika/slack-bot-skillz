@@ -10,7 +10,6 @@ const {
 const {
   getAllSkillsNames,
 } = require("../../lib/requestsHasura/getAllSkillsNames");
-const { getSpecificArgument } = require("../../lib/utils/getSpecificArgument");
 const {
   getSkillCategoryAndIDByName,
 } = require("../../lib/requestsHasura/getSkillCategoryAndIDByName");

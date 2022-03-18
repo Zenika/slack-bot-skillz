@@ -9,7 +9,7 @@ const { fillSkillsByCategory } = require("./fillSkillsByCategory");
 
 Date.prototype.subDays = function (days) {
   var date = new Date(this.valueOf());
-  date.setDate(date.getDate() - days);
+  date.setDate(date.getDate() - days); //daf39614-4559-43f3-ac18-aef87085efc
   return date;
 };
 
@@ -18,6 +18,7 @@ async function arrayOfDelayedSkillsByUsers(app, email) {
   let updatesDelayed = [];
 
   var todayDate = new Date();
+
   lastUpdates = await getSkillsDatesUpdates(email);
   for (let j = 0; j < lastUpdates.UserSkillDesire.length; j++) {
     if (
