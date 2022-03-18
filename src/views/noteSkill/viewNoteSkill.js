@@ -2,11 +2,7 @@ const {
   getUserEmail,
   getChannelID,
 } = require("../../lib/bolt/getSlackInformations");
-const { request } = require("../../lib/utils/request");
 const { postSingleLineMessage } = require("../../messages/postMessages");
-const {
-  getSkillNameAndCategory,
-} = require("../../lib/requestsHasura/getSkillNameAndCategory");
 const {
   getAllSkillsNames,
 } = require("../../lib/requestsHasura/getAllSkillsNames");
@@ -45,7 +41,9 @@ module.exports = {
       const user = body["user"]["id"];
       try {
         const userEmail = await getUserEmail(user, app, app.token);
-        const skillCategoryAndID = await getSkillCategoryAndIDByName(skillName);
+        const skillCategoryAndID = await getSkillCategoryAndIDByName(
+          encodeURIComponent(skillName)
+        );
         setSkillsDesireSkillLevel(
           userEmail,
           skillCategoryAndID.id,
