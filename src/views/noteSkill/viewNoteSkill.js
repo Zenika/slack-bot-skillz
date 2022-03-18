@@ -14,8 +14,8 @@ const {
   getSkillCategoryAndIDByName,
 } = require("../../lib/requestsHasura/getSkillCategoryAndIDByName");
 const {
-  insertOrUpdateSkillLevel,
-} = require("../../lib/requestsHasura/insertOrUpdateSkillLevel");
+  setSkillsDesireSkillLevel,
+} = require("../../lib/requestsHasura/setSkillsDesireSkillLevel");
 
 let skillName = "";
 
@@ -46,18 +46,12 @@ module.exports = {
       try {
         const userEmail = await getUserEmail(user, app, app.token);
         const skillCategoryAndID = await getSkillCategoryAndIDByName(skillName);
-        insertOrUpdateSkillLevel(
-          userEmail,
-          skillValue,
-          desireValue,
-          skillCategoryAndID.id
-        );
-        /* setSkillsDesireSkillLevel(
+        setSkillsDesireSkillLevel(
           userEmail,
           skillCategoryAndID.id,
           skillValue,
           desireValue
-        ); */
+        );
         const channelID = await getChannelID(user, app, app.token);
         await postSingleLineMessage(
           channelID,
