@@ -16,6 +16,7 @@ it("the postMessage fetch fails with an error", async () => {
   try {
     await postSingleLineMessage(
       "testID",
+      "message",
       myAppClientChat,
       "testToken",
       "notification"
