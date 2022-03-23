@@ -4,7 +4,9 @@ const {
 const {
   changeCommandValueForAction,
 } = require("../../actions/noteSkill/actionNoteSkill");
-const { postSingleLineMessage } = require("../../messages/postMessages");
+const {
+  postTwoLinesMessageWithoutTitle,
+} = require("../../messages/postMessages");
 const { switchCommands } = require("../../lib/utils/switchCommands");
 
 module.exports = {
@@ -18,12 +20,13 @@ module.exports = {
 
         try {
           if (responseCommand === "fail") {
-            await postSingleLineMessage(
+            await postTwoLinesMessageWithoutTitle(
               payload.channel_id,
-              ":sweat: Sorry, this skill does not exists. You can create one trough the Skillz app",
+              ":sweat: Sorry, this I can't understand you. You can create a skill trough the Skillz app (https://skillz.zenika.com/skills/mine/languages-and-frameworks/add) or you can use this command like this : */noteSkill [skill name]*",
+              ":bulb: _Get the list of some skills to note with */oldSkills* command_",
               app,
               context.botToken,
-              "Response from /note"
+              "Response from /noteSkill"
             );
           } else {
             await app.client.chat.postMessage({
@@ -47,7 +50,7 @@ module.exports = {
                 },
               ],
               // Text in the notification
-              text: "Response from /note",
+              text: "Response from /noteSkill",
             });
           }
         } catch (e) {
