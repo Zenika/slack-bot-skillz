@@ -25,6 +25,41 @@ async function postSingleLineMessage(
   }
 }
 
+async function postTwoLinesMessageWithoutTitle(
+  channelID,
+  message1,
+  message,
+  app,
+  slackBotToken,
+  notificationMessage
+) {
+  try {
+    await app.client.chat.postMessage({
+      token: slackBotToken,
+      channel: channelID,
+      blocks: [
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: message1,
+          },
+        },
+        {
+          type: "section",
+          text: {
+            type: "mrkdwn",
+            text: message,
+          },
+        },
+      ],
+      text: `${notificationMessage}`,
+    });
+  } catch (e) {
+    console.error("error", e);
+  }
+}
+
 async function postTwoLinesMessage(
   channelID,
   title,
@@ -166,7 +201,7 @@ async function postFourLinesMessageReminder(
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
+            text: "_:bulb: To update theses skills easily you can use the command */noteSkill [skill name]* or you can note them via *Skillz app*_",
           },
         },
         {
@@ -270,7 +305,7 @@ async function postThreeLinesMessageReminder(
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
+            text: "_:bulb: To update theses skills easily you can use the command */noteSkill [skill name]* or you can note them via *Skillz app*_",
           },
         },
         {
@@ -355,7 +390,7 @@ async function postTwoLinesMessageReminder(
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
+            text: "_:bulb: To update theses skills easily you can use the command */noteSkill [skill name]* or you can note them via *Skillz app*_",
           },
         },
         {
@@ -421,7 +456,7 @@ async function postOneLineMessageReminder(
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "_:bulb: To update theses skills easily you can use the command */note [skill name]* or you can note them via *Skillz app*_",
+            text: "_:bulb: To update theses skills easily you can use the command */noteSkill [skill name]* or you can note them via *Skillz app*_",
           },
         },
         {
@@ -447,3 +482,5 @@ module.exports.postTwoLinesMessageReminder = postTwoLinesMessageReminder;
 module.exports.postSingleLineMessage = postSingleLineMessage;
 module.exports.postTwoLinesMessage = postTwoLinesMessage;
 module.exports.postThreeLinesMessageReminder = postThreeLinesMessageReminder;
+module.exports.postTwoLinesMessageWithoutTitle =
+  postTwoLinesMessageWithoutTitle;
