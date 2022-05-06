@@ -95,3 +95,15 @@ workflows:
           filters: &deploy-staging-filters
             branches:
               only: main
+      - deploy:
+          name: deploy-production
+          requires:
+            - prettier
+            - tests
+          clever-app-id: app_fe53126e-88fa-4a72-9e47-366b0ffed556
+          context: clever-cloud2-zenika-dev
+          filters: &deploy-production-filters
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/

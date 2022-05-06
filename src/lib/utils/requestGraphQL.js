@@ -24,6 +24,11 @@ async function request(query, variables) {
   } else if (process.env.ENV === "STAGING") {
     hasura_admin_key = process.env.HASURA_ADMIN_SECRET_STAGING;
     url = process.env.HASURA_GRAPHQL_URL_STAGING;
+  } else if (process.env.ENV === "PRODUCTION") {
+    hasura_admin_key = process.env.HASURA_ADMIN_SECRET;
+    url = process.env.HASURA_GRAPHQL_URL;
+  } else {
+    console.log("Need an ENV variable in .env");
   }
   const options = {
     headers: {
