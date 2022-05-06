@@ -1,11 +1,11 @@
-const { request } = require("../utils/request");
+const { GET_LAST_UPDATED_SKILLS } = require("../queries/getSkillsDatesUpdates");
+const { request } = require("../utils/requestGraphQL");
 
 async function getSkillsDatesUpdates(email) {
-  const response = await request(
-    `${process.env.HASURA_BASE_URL}/api/rest/get-last-updated-skills?email=${email}`,
-    "GET"
-  );
-  return response;
+  const variables = {
+    email: email,
+  };
+  const response = await request(GET_LAST_UPDATED_SKILLS, variables);
+  return response.data;
 }
-
 module.exports.getSkillsDatesUpdates = getSkillsDatesUpdates;

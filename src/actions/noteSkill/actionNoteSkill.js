@@ -38,7 +38,7 @@ module.exports = {
         app,
         context.botToken
       );
-      const skillID = await getSkillIDByName(encodeURIComponent(skillName));
+      const skillID = await getSkillIDByName(skillName);
       const response = await getSkillsInfosDesireAndSkillByID(
         userEmail,
         skillID.id
