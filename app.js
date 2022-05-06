@@ -4,14 +4,8 @@ const { commandsHandler } = require("./src/commands/commandsHandler");
 const { actionsHandler } = require("./src/actions/actionsHandler");
 const { viewHandler } = require("./src/views/viewHandler");
 const { monthlyCron } = require("./src/cron/monthlyCron");
-const {
-  arrayOfDelayedSkillsByUsers,
-} = require("./src/cron/arraysOfDelayedSkills");
-// Create a Bolt Receiver
-const { getAllAgencies } = require("./src/lib/requestsHasura/getAllAgencies");
-
-const { getAllEmails } = require("./src/lib/requestsHasura/getAllEmails");
 const { getAllTopics } = require("./src/lib/requestsHasura/getAllTopics");
+
 const receiver = new ExpressReceiver({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   logLevel: LogLevel.INFO,
