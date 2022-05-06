@@ -1,11 +1,12 @@
-const { request } = require("../utils/request");
+const { GET_BOT_NOTIFICATIONS } = require("../queries/getBotNotifications");
+const { request } = require("../utils/requestGraphQL");
 
 async function getBotNotifications(email) {
-  const response = await request(
-    `${process.env.HASURA_BASE_URL}/api/rest/get-bot-notifications?email=${email}`,
-    "GET"
-  );
-  return response;
+  const variables = {
+    email: email,
+  };
+  const response = await request(GET_BOT_NOTIFICATIONS, variables);
+  return response.data;
 }
 
 module.exports.getBotNotifications = getBotNotifications;

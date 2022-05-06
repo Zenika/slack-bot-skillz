@@ -2,7 +2,7 @@ var cron = require("node-cron");
 const { arrayOfDelayedSkillsByAllUsers } = require("./arraysOfDelayedSkills");
 
 async function monthlyCron(app) {
-  if (process.env.ENV === "DEV") {
+  if (process.env.ENV === "DEV" || process.env.ENV === "STAGING") {
     cron.schedule("* * * * *", () => {
       arrayOfDelayedSkillsByAllUsers(app);
     });

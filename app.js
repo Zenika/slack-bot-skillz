@@ -4,10 +4,8 @@ const { commandsHandler } = require("./src/commands/commandsHandler");
 const { actionsHandler } = require("./src/actions/actionsHandler");
 const { viewHandler } = require("./src/views/viewHandler");
 const { monthlyCron } = require("./src/cron/monthlyCron");
-const {
-  arrayOfDelayedSkillsByUsers,
-} = require("./src/cron/arraysOfDelayedSkills");
-// Create a Bolt Receiver
+const { getAllTopics } = require("./src/lib/requestsHasura/getAllTopics");
+
 const receiver = new ExpressReceiver({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   logLevel: LogLevel.INFO,
@@ -37,6 +35,8 @@ app.event("message", async ({ event, client }) => {
   actionsHandler(app);
   commandsHandler(app);
   viewHandler(app);
+  //getAllAgencies()
+  getAllTopics();
   await app.start({ port: process.env.PORT });
   await monthlyCron(app);
   //arrayOfDelayedSkillsByUsers(app, "mai-ly.lehoux@zenika.com")

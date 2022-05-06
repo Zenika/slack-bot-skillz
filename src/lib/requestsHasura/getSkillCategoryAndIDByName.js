@@ -1,12 +1,18 @@
-const { request } = require("../utils/request");
+const {
+  GET_SKILL_CATEGORY_AND_ID_BY_NAME,
+} = require("../queries/getSkillCategoryAndIDByName");
+const { request } = require("../utils/requestGraphQL");
 
 async function getSkillCategoryAndIDByName(name) {
+  const variables = {
+    name: name,
+  };
   try {
     const response = await request(
-      `${process.env.HASURA_BASE_URL}/api/rest/get-skill-category-ID-by-name?name=${name}`,
-      "GET"
+      GET_SKILL_CATEGORY_AND_ID_BY_NAME,
+      variables
     );
-    return response.Skill[0];
+    return response.data.Skill[0];
   } catch (e) {
     console.error(e);
   }

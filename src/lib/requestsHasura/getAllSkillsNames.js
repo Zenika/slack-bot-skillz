@@ -1,11 +1,8 @@
-const { request } = require("../utils/request");
-
+const { request } = require("../utils/requestGraphQL");
+const { GET_ALL_SKILLS_NAME } = require("../queries/getAllSkillsName");
 async function getAllSkillsNames() {
-  const response = await request(
-    `${process.env.HASURA_BASE_URL}/api/rest/get-all-skills-name`,
-    "GET"
-  );
-  return response;
+  const response = await request(GET_ALL_SKILLS_NAME);
+  return response.data;
 }
 
 module.exports.getAllSkillsNames = getAllSkillsNames;

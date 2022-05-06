@@ -49,7 +49,8 @@ async function arrayOfDelayedSkillsByAllUsers(app) {
   let beta_user = false;
 
   for (let i = 0; i < usersAllEmails.User.length; i++) {
-    if (process.env.ENV != "PRODUCTION") {
+    if (process.env.BETA_TESTS) {
+      //send reminder to beta testers only
       const beta_emails = process.env.BETA_TESTS.split(";");
       for (let j = 0; j < beta_emails.length; j++) {
         if (usersAllEmails.User[i].email === beta_emails[j]) {
@@ -58,10 +59,7 @@ async function arrayOfDelayedSkillsByAllUsers(app) {
         }
       }
     }
-    if (
-      process.env.ENV == "PRODUCTION" ||
-      (process.env.ENV != "PRODUCTION" && beta_user === true)
-    ) {
+    if (beta_user) {
       beta_user = false;
       notificationsUser = await getBotNotifications(
         usersAllEmails.User[i].email

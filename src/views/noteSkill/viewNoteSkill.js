@@ -41,9 +41,7 @@ module.exports = {
       const user = body["user"]["id"];
       try {
         const userEmail = await getUserEmail(user, app, app.token);
-        const skillCategoryAndID = await getSkillCategoryAndIDByName(
-          encodeURIComponent(skillName)
-        );
+        const skillCategoryAndID = await getSkillCategoryAndIDByName(skillName);
         setSkillsDesireSkillLevel(
           userEmail,
           skillCategoryAndID.id,

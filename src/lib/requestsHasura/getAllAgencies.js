@@ -1,12 +1,10 @@
-const { request } = require("../utils/request");
+const { request } = require("../utils/requestGraphQL");
+const { GET_ALL_AGENCIES } = require("../queries/getAllAgencies");
 
 async function getAllAgencies() {
   try {
-    const response = await request(
-      `${process.env.HASURA_BASE_URL}/api/rest/get-all-agencies`,
-      "GET"
-    );
-    return response;
+    const response = await request(GET_ALL_AGENCIES);
+    return response.data;
   } catch (e) {
     console.error(e);
   }
