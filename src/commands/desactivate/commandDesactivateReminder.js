@@ -25,20 +25,20 @@ module.exports = {
             await postTwoLinesMessage(
               payload.channel_id,
               "*Command failed* :sweat:",
-              ":bulb: *The Skillz reminder is already desactivate. To activate it try * : _/activate_",
+              ":bulb: *The Skillz reminder is already desactivate. To activate it try * : _/skillz-activateReminder_",
               app,
               context.botToken,
-              "Response from /desactivate command"
+              "Response from /skillz-desactivateReminder command"
             );
           } else {
             await setBotNotifications(userEmail, false);
             await postTwoLinesMessage(
               payload.channel_id,
               ":hugging_face: *You've desactivated my monthly reminders* :hugging_face:",
-              ":bulb: Get a monthly reminder about your skills that have not been updated for more than 1 month. _You can display them right now by running /oldSkills_ :bulb:",
+              ":bulb: Get a monthly reminder about your skills that have not been updated for more than 1 month. _You can display them right now by running /skillz-reminderMessage_ :bulb:",
               app,
               context.botToken,
-              "Response from /desactivate command"
+              "Response from /skillz-desactivateReminder command"
             );
           }
         } catch (error) {

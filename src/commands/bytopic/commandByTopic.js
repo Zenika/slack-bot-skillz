@@ -14,10 +14,10 @@ module.exports = {
             await postTwoLinesMessage(
               payload.channel_id,
               "*Command failed* :sweat:",
-              ":bulb: *Use this command like this* : _/bytopic [topic] [city]_ \n\n :clipboard: _Topic_ available : Frontend, Backend, Agilité, Maker, Réseau, Web, Security, Microservices, Network, Ops, Devops, IA, Data, Mobile \n :globe_with_meridians: _City_ available : Paris, Nantes, Singapore, Bordeaux, Brest, Montreal, Grenoble, Lyon, Rennes, Lille",
+              ":bulb: *Use this command like this* : _/skillz-byTopic [topic] [city]_ \n\n :clipboard: _Topic_ available : Frontend, Backend, Agilité, Maker, Réseau, Web, Security, Microservices, Network, Ops, Devops, IA, Data, Mobile \n :globe_with_meridians: _City_ available : Paris, Nantes, Singapore, Bordeaux, Brest, Montreal, Grenoble, Lyon, Rennes, Lille",
               app,
               context.botToken,
-              "Response from /bytopic command"
+              "Response from /skillz-byTopic command"
             );
           } else if (responseCommand !== "") {
             await postTwoLinesMessage(
@@ -26,7 +26,7 @@ module.exports = {
               responseCommand,
               app,
               context.botToken,
-              "Response from /bytopic command"
+              "Response from /skillz-byTopic command"
             );
           } else {
             await postTwoLinesMessage(
@@ -35,7 +35,7 @@ module.exports = {
               "Nobody like this topic at this agency",
               app,
               context.botToken,
-              "Response from /bytopic command"
+              "Response from /skillz-byTopic command"
             );
           }
         } catch (error) {
