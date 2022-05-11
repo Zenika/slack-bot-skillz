@@ -6,15 +6,18 @@ async function monthlyCron(app) {
     cron.schedule("* * * * *", () => {
       arrayOfDelayedSkillsByAllUsers(app);
     });
-  }
-  if (process.env.BETA_TESTS) {
+  } else if (process.env.BETA_TESTS) {
     cron.schedule("0 0 0 * *", () => {
       arrayOfDelayedSkillsByAllUsers(app);
     });
   } else {
-    cron.schedule("0 14 1 * *", () => {
+    cron.schedule("0 0 0 * *", () => {
       arrayOfDelayedSkillsByAllUsers(app);
     });
+    //send message once monthly. Uncomment once the beta tests are done
+    /*     cron.schedule("0 14 1 * *", () => {
+      arrayOfDelayedSkillsByAllUsers(app);
+    }); */
   }
 }
 
