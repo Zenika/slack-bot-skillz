@@ -331,8 +331,8 @@ async function postMessageSkillReminder(
             text: {
               type: "mrkdwn",
               text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command */desactivate* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/activate_ command",
+                ? ":mechanic: This is an automatic message. To desactivate me use the command *_/skillz-desactivate_* :mechanic:"
+                : ":bulb: You can have this information monthly. Be sure that you used the _/skillz-activate_ command",
             },
           },
         ],

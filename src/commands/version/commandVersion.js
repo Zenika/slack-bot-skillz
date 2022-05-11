@@ -14,7 +14,7 @@ module.exports = {
             `The actual version of this bot is ${pjson.version}`,
             app,
             context.botToken,
-            "Response from /version"
+            "Response from /skillz-version"
           );
         } catch (e) {
           console.error(e);
