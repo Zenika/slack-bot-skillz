@@ -7,7 +7,7 @@ async function monthlyCron(app) {
       arrayOfDelayedSkillsByAllUsers(app);
     });
   } else if (process.env.BETA_TESTS) {
-    cron.schedule("0 16 * * *", () => {
+    cron.schedule("45 16 * * *", () => {
       arrayOfDelayedSkillsByAllUsers(app);
     });
   } else {
