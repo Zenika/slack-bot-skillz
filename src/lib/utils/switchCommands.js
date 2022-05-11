@@ -3,37 +3,37 @@ function switchCommands(command) {
     case "/bytopic":
       switch (process.env.ENV) {
         case "PRODUCTION":
-          return "/skillz-byTopic";
+          return "/skillz-by-topic";
         default:
-          return `/skillz-byTopic_${process.env.ENV}`;
+          return `/skillz-by-topic_${process.env.ENV}`;
       }
     case "/activate":
       switch (process.env.ENV) {
         case "PRODUCTION":
-          return "/skillz-activateReminder";
+          return "/skillz-activate";
         default:
-          return `/skillz-activateReminder_${process.env.ENV}`;
+          return `/skillz-activate_${process.env.ENV}`;
       }
     case "/desactivate":
       switch (process.env.ENV) {
         case "PRODUCTION":
-          return "/skillz-desactivateReminder";
+          return "/skillz-desactivate";
         default:
-          return `/skillz-desactivateReminder_${process.env.ENV}`;
+          return `/skillz-desactivate_${process.env.ENV}`;
       }
     case "/noteSkill":
       switch (process.env.ENV) {
         case "PRODUCTION":
-          return "/skillz-noteSkill";
+          return "/skillz-note-skill";
         default:
-          return `/skillz-noteSkill_${process.env.ENV}`;
+          return `/skillz-note-skill_${process.env.ENV}`;
       }
     case "/oldSkills":
       switch (process.env.ENV) {
         case "PRODUCTION":
-          return "/skillz-reminderMessage";
+          return "/skillz-reminder-message";
         default:
-          return `/skillz-reminderMessage_${process.env.ENV}`;
+          return `/skillz-reminder-message_${process.env.ENV}`;
       }
     case "/version":
       switch (process.env.ENV) {

@@ -201,7 +201,7 @@ async function postFourLinesMessageReminder(
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "_:bulb: To update theses skills easily you can use the command */skillz-noteSkill [skill name]* or you can note them via *Skillz app*_",
+            text: "_:bulb: To update theses skills easily you can use the command */skillz-note-skill [skill name]* or you can note them via *Skillz app*_",
           },
         },
         {
@@ -209,7 +209,7 @@ async function postFourLinesMessageReminder(
           text: {
             type: "mrkdwn",
             text: reminder
-              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivateReminder* :mechanic:"
+              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivate* :mechanic:"
               : ":bulb: You can have this information monthly. Be sure that you've used the _/skillz-activateReminder_ command",
           },
         },
@@ -305,7 +305,7 @@ async function postThreeLinesMessageReminder(
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "_:bulb: To update theses skills easily you can use the command */skillz-noteSkills [skill name]* or you can note them via *Skillz app*_",
+            text: "_:bulb: To update theses skills easily you can use the command */skillz-note-skill [skill name]* or you can note them via *Skillz app*_",
           },
         },
         {
@@ -313,7 +313,7 @@ async function postThreeLinesMessageReminder(
           text: {
             type: "mrkdwn",
             text: reminder
-              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivateReminder* :mechanic:"
+              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivate* :mechanic:"
               : ":bulb: You can have this information monthly. Be sure that you've used the _/skillz-activateReminder_ command",
           },
         },
@@ -390,7 +390,7 @@ async function postTwoLinesMessageReminder(
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "_:bulb: To update theses skills easily you can use the command */skillz-noteSkills [skill name]* or you can note them via *Skillz app*_",
+            text: "_:bulb: To update theses skills easily you can use the command */skillz-note-skill [skill name]* or you can note them via *Skillz app*_",
           },
         },
         {
@@ -398,8 +398,8 @@ async function postTwoLinesMessageReminder(
           text: {
             type: "mrkdwn",
             text: reminder
-              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivateReminder* :mechanic:"
-              : ":bulb: You can have this information monthly. Be sure that you've used the _/skillz-activateReminder_ command",
+              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivate* :mechanic:"
+              : ":bulb: You can have this information monthly. Be sure that you've used the _/skillz-activate_ command",
           },
         },
       ],
@@ -456,7 +456,7 @@ async function postOneLineMessageReminder(
           type: "section",
           text: {
             type: "mrkdwn",
-            text: "_:bulb: To update theses skills easily you can use the command */skillz-noteSkills [skill name]* or you can note them via *Skillz app*_",
+            text: "_:bulb: To update theses skills easily you can use the command */skillz-note-skill [skill name]* or you can note them via *Skillz app*_",
           },
         },
         {
@@ -464,7 +464,7 @@ async function postOneLineMessageReminder(
           text: {
             type: "mrkdwn",
             text: reminder
-              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivateReminder* :mechanic:"
+              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivate* :mechanic:"
               : ":bulb: You can have this information monthly. Be sure that you've used the _/skillz-activateReminder_ command",
           },
         },

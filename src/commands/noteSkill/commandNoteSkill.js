@@ -22,11 +22,11 @@ module.exports = {
           if (responseCommand === "fail") {
             await postTwoLinesMessageWithoutTitle(
               payload.channel_id,
-              ":sweat: Sorry, this I can't understand you. You can create a skill trough the Skillz app (https://skillz.zenika.com/skills/mine/languages-and-frameworks/add) or you can use this command like this : */skillz-noteSkill [skill name]*",
-              ":bulb: _Get the list of some skills to note with */skillz-reminderMessage* command_",
+              ":sweat: Sorry, this I can't understand you. You can create a skill trough the Skillz app (https://skillz.zenika.com/skills/mine/languages-and-frameworks/add) or you can use this command like this : */skillz-note-skill [skill name]*",
+              ":bulb: _Get the list of some skills to note with */skillz-reminder-message* command_",
               app,
               context.botToken,
-              "Response from /skillz-noteSkill"
+              "Response from /skillz-note-skill"
             );
           } else {
             await app.client.chat.postMessage({
@@ -50,7 +50,7 @@ module.exports = {
                 },
               ],
               // Text in the notification
-              text: "Response from /skillz-noteSkill",
+              text: "Response from /skillz-note-skill",
             });
           }
         } catch (e) {
