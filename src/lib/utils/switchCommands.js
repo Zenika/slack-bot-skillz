@@ -3,46 +3,47 @@ function switchCommands(command) {
     case "/bytopic":
       switch (process.env.ENV) {
         case "PRODUCTION":
-          return "/bytopic";
+          return "/skillz-by-topic";
         default:
-          return `/bytopic_${process.env.ENV}`;
+          return `/skillz-by-topic_${process.env.ENV}`;
       }
     case "/activate":
       switch (process.env.ENV) {
         case "PRODUCTION":
-          return "/activate";
+          return "/skillz-activate";
         default:
-          return `/activate_${process.env.ENV}`;
+          return `/skillz-activate_${process.env.ENV}`;
       }
     case "/desactivate":
       switch (process.env.ENV) {
         case "PRODUCTION":
-          return "/desactivate";
+          return "/skillz-desactivate";
         default:
-          return `/desactivate_${process.env.ENV}`;
+          return `/skillz-desactivate_${process.env.ENV}`;
       }
     case "/noteSkill":
       switch (process.env.ENV) {
         case "PRODUCTION":
-          return "/noteSkill";
+          return "/skillz-note-skill";
         default:
-          return `/noteSkill_${process.env.ENV}`;
+          return `/skillz-note-skill_${process.env.ENV}`;
       }
     case "/oldSkills":
       switch (process.env.ENV) {
         case "PRODUCTION":
-          return "/oldSkills";
+          return "/skillz-reminder-message";
         default:
-          return `/oldSkills_${process.env.ENV}`;
+          return `/skillz-reminder-message_${process.env.ENV}`;
       }
     case "/version":
       switch (process.env.ENV) {
         case "PRODUCTION":
-          return "/version";
+          return "/skillz-version";
         default:
-          return `/version_${process.env.ENV}`;
+          return `/skillz-version_${process.env.ENV}`;
       }
     default:
+      console.log("not recognized command");
       return "not recognized command";
   }
 }
