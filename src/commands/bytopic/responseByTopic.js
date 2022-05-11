@@ -1,6 +1,5 @@
 const { verifyAgencyIsGiven } = require("../../lib/utils/verifyAgencyIsGiven");
 const { verifyTopicIsGiven } = require("../../lib/utils/verifyTopicIsGiven");
-const { request } = require("../../lib/utils/request");
 const {
   getUsersByAgencyAndTopics,
 } = require("../../lib/requestsHasura/getUsersByAgencyAndTopics");

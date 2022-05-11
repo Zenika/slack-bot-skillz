@@ -18,13 +18,7 @@ async function request(query, variables) {
   let hasura_admin_key = "";
   let url = "";
 
-  if (process.env.ENV === "DEV") {
-    hasura_admin_key = process.env.HASURA_ADMIN_SECRET_DEV;
-    url = process.env.HASURA_GRAPHQL_URL_DEV;
-  } else if (process.env.ENV === "STAGING") {
-    hasura_admin_key = process.env.HASURA_ADMIN_SECRET_STAGING;
-    url = process.env.HASURA_GRAPHQL_URL_STAGING;
-  } else if (process.env.ENV === "PRODUCTION") {
+  if (process.env.ENV) {
     hasura_admin_key = process.env.HASURA_ADMIN_SECRET;
     url = process.env.HASURA_GRAPHQL_URL;
   } else {
