@@ -95,7 +95,7 @@ workflows:
           filters: &deploy-staging-filters
             branches:
               only: main
-      - deploy:
+      - deploy-production:
           name: deploy-production
           requires:
             - prettier
