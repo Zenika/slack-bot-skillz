@@ -106,9 +106,11 @@ workflows:
       - prettier:
           requires:
             - install-dependencies
+          filters: *deploy-filters
       - tests:
           requires:
             - install-dependencies
+          filters: *deploy-filters
       - deploy:
           name: deploy
           requires:
