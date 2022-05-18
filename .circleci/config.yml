@@ -95,6 +95,26 @@ workflows:
           filters: &deploy-staging-filters
             branches:
               only: main
+  qc-test-deploy-production:
+    jobs:
+      - install-dependencies
+      - prettier:
+          requires:
+            - install-dependencies
+      - tests:
+          requires:
+            - install-dependencies
+      - deploy:
+          name: deploy-staging
+          requires:
+            - prettier
+            - tests
+          clever-app-id: app_f3ae1d9d-d9ad-4ce3-a019-d18a99e5c73a
+          context: clever-cloud2-zenika-dev
+          filters: &deploy-staging-filters
+            branches:
+              only: main
+
       - deploy:
           name: deploy-production
           requires:
