@@ -97,7 +97,12 @@ workflows:
               only: main
   qc-test-deploy:
     jobs:
-      - install-dependencies
+      - install-dependencies:
+          filters: &deploy-filters
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
       - prettier:
           requires:
             - install-dependencies
@@ -111,8 +116,4 @@ workflows:
             - tests
           clever-app-id: app_fe53126e-88fa-4a72-9e47-366b0ffed556
           context: clever-cloud2-zenika-dev
-          filters: &deploy-production-filters
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
+          filters: *deploy-filters
