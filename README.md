@@ -23,3 +23,7 @@ Architecture schéma is in [this file](https://docs.google.com/drawings/d/19-DK9
 The test library used is [Jest](https://jestjs.io/fr/). You can use tests with this command : `npm run test`.
 
 The [`coverage`](https://www.npmjs.com/package/coverage) library is installed on this project. You can check the coverage of this project with this command : `npm run coverage`.
+
+### Versioning
+
+_Check the actual version of the bots thanks to /skillz-version-{ENV}_. If you want to update it, change the "version" field from the package.json
