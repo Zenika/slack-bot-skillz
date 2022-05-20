@@ -6,6 +6,9 @@ const {
   getSkillsDatesUpdates,
 } = require("../lib/requestsHasura/getSkillsDatesUpdates");
 const { fillSkillsByCategory } = require("./fillSkillsByCategory");
+const {
+  getLastUpdateOnSkill,
+} = require("../lib/requestsHasura/getLastUpdateOnSkill");
 
 Date.prototype.subDays = function (days) {
   var date = new Date(this.valueOf());
@@ -40,6 +43,14 @@ async function arrayOfDelayedSkillsByUsers(app, email) {
   return updatesDelayed;
 }
 
+function dateToCompare(todayDate) {
+  if (process.env.BETA_TESTS) {
+    return todayDate.subDays(1);
+  } else {
+    return todayDate.subDays(30);
+  }
+}
+
 async function arrayOfDelayedSkillsByAllUsers(app) {
   var todayDate = new Date();
   let lastUpdates = [{}];
@@ -47,8 +58,19 @@ async function arrayOfDelayedSkillsByAllUsers(app) {
   const usersAllEmails = await getAllEmails();
   let notificationsUser = [];
   let beta_user = false;
+  let lastUpdateOnASkill = "";
 
   for (let i = 0; i < usersAllEmails.User.length; i++) {
+    lastUpdateOnASkill = await getLastUpdateOnSkill(
+      usersAllEmails.User[i].email
+    );
+    if (
+      lastUpdateOnASkill.length === 0 ||
+      (lastUpdateOnASkill.length > 0 &&
+        new Date(lastUpdateOnASkill[0].created_at) > dateToCompare(todayDate))
+    ) {
+      continue;
+    }
     if (process.env.BETA_TESTS) {
       //send reminder to beta testers only
       const beta_emails = process.env.BETA_TESTS.split(";");

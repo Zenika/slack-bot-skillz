@@ -8,7 +8,6 @@ const {
 async function postMessageSkillReminder(
   channelID,
   app,
-  slackBotToken,
   arrayLanguagesAndFrameworks,
   arrayTools,
   arrayPlatforms,
@@ -304,43 +303,7 @@ async function postMessageSkillReminder(
   }
   //*************** */
   else {
-    try {
-      await app.client.chat.postMessage({
-        token: slackBotToken,
-        channel: channelID,
-        blocks: [
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "*:alarm_clock: You are up to date with your skills !*",
-            },
-          },
-          {
-            type: "divider",
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: "_:bulb: To update your profile, note some skills via *Skillz app*_",
-            },
-          },
-          {
-            type: "section",
-            text: {
-              type: "mrkdwn",
-              text: reminder
-                ? ":mechanic: This is an automatic message. To desactivate me use the command *_/skillz-desactivate_* :mechanic:"
-                : ":bulb: You can have this information monthly. Be sure that you used the _/skillz-activate_ command",
-            },
-          },
-        ],
-        text: "Skillz reminder",
-      });
-    } catch (e) {
-      console.error("error", e);
-    }
+    return 0;
   }
 }
 module.exports.postMessageSkillReminder = postMessageSkillReminder;
