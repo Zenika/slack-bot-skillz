@@ -209,7 +209,7 @@ async function postFourLinesMessageReminder(
           text: {
             type: "mrkdwn",
             text: reminder
-              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivate* :mechanic:"
+              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivate*"
               : ":bulb: You can have this information monthly. Be sure that you've used the _/skillz-activate_ command",
           },
         },
@@ -313,7 +313,7 @@ async function postThreeLinesMessageReminder(
           text: {
             type: "mrkdwn",
             text: reminder
-              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivate* :mechanic:"
+              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivate*"
               : ":bulb: You can have this information monthly. Be sure that you've used the _/skillz-activate_ command",
           },
         },
@@ -398,7 +398,7 @@ async function postTwoLinesMessageReminder(
           text: {
             type: "mrkdwn",
             text: reminder
-              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivate* :mechanic:"
+              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivate*"
               : ":bulb: You can have this information monthly. Be sure that you've used the _/skillz-activate_ command",
           },
         },
@@ -464,7 +464,7 @@ async function postOneLineMessageReminder(
           text: {
             type: "mrkdwn",
             text: reminder
-              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivate* :mechanic:"
+              ? ":mechanic: This is an automatic message. To desactivate me use the command */skillz-desactivate*"
               : ":bulb: You can have this information monthly. Be sure that you've used the _/skillz-activate_ command",
           },
         },

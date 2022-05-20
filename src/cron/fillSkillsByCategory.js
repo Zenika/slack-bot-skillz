@@ -39,7 +39,6 @@ async function fillSkillsByCategory(userEmail, arraySkill, app, reminder) {
     await postMessageSkillReminder(
       userID,
       app,
-      app.token,
       arrayLanguagesAndFrameworks.toString(),
       arrayTools.toString(),
       arrayPlatforms.toString(),

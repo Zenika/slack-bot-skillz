@@ -23,7 +23,9 @@ async function postMessageSkillReminder(
     try {
       await postFourLinesMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Languages and Frameworks*",
         arrayLanguagesAndFrameworks,
         "*Tools*",
@@ -48,7 +50,9 @@ async function postMessageSkillReminder(
     try {
       await postThreeLinesMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Languages and Frameworks*",
         arrayLanguagesAndFrameworks,
         "*Tools*",
@@ -71,7 +75,9 @@ async function postMessageSkillReminder(
     try {
       await postThreeLinesMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Languages and Frameworks*",
         arrayLanguagesAndFrameworks,
         "*Platforms*",
@@ -94,7 +100,9 @@ async function postMessageSkillReminder(
     try {
       await postThreeLinesMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Tools*",
         arrayTools,
         "*Platforms*",
@@ -117,7 +125,9 @@ async function postMessageSkillReminder(
     try {
       await postThreeLinesMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Languages and Frameworks*",
         arrayLanguagesAndFrameworks,
         "*Tools*",
@@ -136,7 +146,9 @@ async function postMessageSkillReminder(
     try {
       await postTwoLinesMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Languages and Frameworks*",
         arrayLanguagesAndFrameworks,
         "*Tools*",
@@ -156,7 +168,9 @@ async function postMessageSkillReminder(
     try {
       await postTwoLinesMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Languages and Frameworks*",
         arrayLanguagesAndFrameworks,
         "*Platforms*",
@@ -176,7 +190,9 @@ async function postMessageSkillReminder(
     try {
       await postTwoLinesMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Languages and Frameworks*",
         arrayLanguagesAndFrameworks,
         "*Technics and Methods*",
@@ -193,7 +209,9 @@ async function postMessageSkillReminder(
     try {
       await postTwoLinesMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Tools*",
         arrayTools,
         "*Platforms*",
@@ -210,7 +228,9 @@ async function postMessageSkillReminder(
     try {
       await postTwoLinesMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Tools*",
         arrayTools,
         "*Technics and Methods*",
@@ -227,7 +247,9 @@ async function postMessageSkillReminder(
     try {
       await postTwoLinesMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Platforms*",
         arrayPlatforms,
         "*Technics and Methods*",
@@ -244,7 +266,9 @@ async function postMessageSkillReminder(
     try {
       await postOneLineMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Platforms*",
         arrayPlatforms,
         app,
@@ -259,7 +283,9 @@ async function postMessageSkillReminder(
     try {
       await postOneLineMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Languages and Frameworks*",
         arrayLanguagesAndFrameworks,
         app,
@@ -274,7 +300,9 @@ async function postMessageSkillReminder(
     try {
       await postOneLineMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Tools*",
         arrayTools,
         app,
@@ -289,7 +317,9 @@ async function postMessageSkillReminder(
     try {
       await postOneLineMessageReminder(
         channelID,
-        "*:alarm_clock: You didn't update these skills since more than 1 month :*",
+        reminder
+          ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
+          : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
         "*Technics and Methods*",
         arrayTechnicsAndMethods,
         app,
@@ -303,7 +333,35 @@ async function postMessageSkillReminder(
   }
   //*************** */
   else {
-    return 0;
+    if (reminder) return;
+    try {
+      await app.client.chat.postMessage({
+        token: app.botToken,
+        channel: channelID,
+        blocks: [
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: "*:alarm_clock: You are up to date with all your skills !*",
+            },
+          },
+          {
+            type: "divider",
+          },
+          {
+            type: "section",
+            text: {
+              type: "mrkdwn",
+              text: ":bulb: You've learned something else since the last time ? Let us know. _To update your profile, note some skills via *Skillz app*_",
+            },
+          },
+        ],
+        text: "Skillz reminder",
+      });
+    } catch (e) {
+      console.error("error", e);
+    }
   }
 }
 module.exports.postMessageSkillReminder = postMessageSkillReminder;
