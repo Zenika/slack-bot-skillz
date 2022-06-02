@@ -1,6 +1,6 @@
 version: 2.1
 
-orbs: 
+orbs:
   node: circleci/node@5.0.2
 
 executors:
@@ -32,12 +32,12 @@ workflows:
       - node/run:
           name: prettier
           npm-run: prettier:check
-          filters: 
+          filters:
             tags:
               only: /^v.*/
       - node/test:
           name: tests
-          filters: 
+          filters:
             tags:
               only: /^v.*/
       - deploy:
@@ -57,7 +57,7 @@ workflows:
             - tests
           clever-app-id: app_fe53126e-88fa-4a72-9e47-366b0ffed556
           context: clever-cloud2-zenika-dev
-          filters: 
+          filters:
             tags:
               only: /^v.*/
             branches:
