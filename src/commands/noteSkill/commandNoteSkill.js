@@ -22,8 +22,8 @@ module.exports = {
           if (responseCommand === "fail") {
             await postTwoLinesMessageWithoutTitle(
               payload.channel_id,
-              ":sweat: Sorry, this I can't understand you. You can create a skill trough the Skillz app (https://skillz.zenika.com/skills/mine/languages-and-frameworks/add) or you can use this command like this : */skillz-note-skill [skill name]*",
-              ":bulb: _Get the list of some skills to note with */skillz-reminder-message* command_",
+              ":sweat: Sorry, this I can't understand you. You can create a skill trough the Skillz app (https://skillz.zenika.com/skills/mine/languages-and-frameworks/add) or you can use this command like this : /skillz-note-skill [skill name]",
+              ":bulb: _Get the list of some skills to note with_ /skillz-reminder-message command",
               app,
               context.botToken,
               "Response from /skillz-note-skill"

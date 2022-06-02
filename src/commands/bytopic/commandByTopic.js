@@ -14,7 +14,7 @@ module.exports = {
             await postTwoLinesMessage(
               payload.channel_id,
               "*Command failed* :sweat:",
-              ":bulb: *Use this command like this* : _/skillz-by-topic [topic] [city]_ \n\n :clipboard: _Topic_ available : Frontend, Backend, Agilité, Maker, Réseau, Web, Security, Microservices, Network, Ops, Devops, IA, Data, Mobile \n :globe_with_meridians: _City_ available : Paris, Nantes, Singapore, Bordeaux, Brest, Montreal, Grenoble, Lyon, Rennes, Lille",
+              ":bulb: *Use this command like this* : /skillz-by-topic [topic] [city] \n\n :clipboard: _Topic_ available : Frontend, Backend, Agilité, Maker, Réseau, Web, Security, Microservices, Network, Ops, Devops, IA, Data, Mobile \n :globe_with_meridians: _City_ available : Paris, Nantes, Singapore, Bordeaux, Brest, Montreal, Grenoble, Lyon, Rennes, Lille",
               app,
               context.botToken,
               "Response from /skillz-by-topic command"

@@ -353,7 +353,7 @@ async function postMessageSkillReminder(
             type: "section",
             text: {
               type: "mrkdwn",
-              text: ":bulb: You've learned something else since the last time ? Let us know. _To update your profile, note some skills via *Skillz app*_",
+              text: ":bulb: You've learned something else since the last time ? Let us know. _To update your profile, note some skills via <https://skillz.zenika.com/|Skillz app>",
             },
           },
         ],
