@@ -7,8 +7,6 @@ module.exports = {
           view: {
             type: "home",
             callback_id: "home_view",
-
-            /* body of the view */
             blocks: [
               {
                 type: "section",
