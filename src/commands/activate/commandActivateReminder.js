@@ -25,7 +25,7 @@ module.exports = {
             await postTwoLinesMessage(
               payload.channel_id,
               "*Command failed* :sweat:",
-              ":bulb: *The Skillz reminder is already activate. To desactivate it try * : _/skillz-desactivate_",
+              ":bulb: *The Skillz reminder is already activate. To desactivate it try * : /skillz-desactivate",
               app,
               context.botToken,
               "Response from /skillz-activate command"
@@ -35,7 +35,7 @@ module.exports = {
             await postTwoLinesMessage(
               payload.channel_id,
               ":hugging_face: *You've activated my monthly reminders* :hugging_face:",
-              ":bulb: Get a monthly reminder about your skills that have not been updated for more than 1 month. _You can display them right now by running /skillz-reminder-message_ :bulb:",
+              ":bulb: Get a monthly reminder about your skills that have not been updated for more than 1 month. _You can display them right now by running_ /skillz-reminder-message :bulb:",
               app,
               context.botToken,
               "Response from /skillz-activate command"
