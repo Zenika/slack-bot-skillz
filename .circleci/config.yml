@@ -1,90 +1,45 @@
 version: 2.1
 
+orbs:
+  node: circleci/node@5.0.2
+
 executors:
-  node:
+  clever-cloud-deployer:
     docker:
-      - image: cimg/node:16.13.0
+      - image: cimg/node:lts
 
 jobs:
-  install-dependencies:
-    executor: node
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-packaging-dependencies-{{ checksum "package-lock.json" }}
-            - v1-packaging-dependencies-
-      - run:
-          name: install-dependencies
-          command: npm ci
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-packaging-dependencies-{{ checksum "package-lock.json" }}
-  prettier:
-    executor: node
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-packaging-dependencies-{{ checksum "package-lock.json" }}
-            - v1-packaging-dependencies-
-      - run:
-          name: prettier
-          command: npm run prettier:check
-  tests:
-    executor: node
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-packaging-dependencies-{{ checksum "package-lock.json" }}
-            - v1-packaging-dependencies-
-      - run:
-          name: tests
-          command: npm run test
   deploy:
-    executor: node
+    executor: clever-cloud-deployer
     parameters:
       clever-app-id:
         type: string
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-packaging-dependencies-{{ checksum "package-lock.json" }}
-            - v1-packaging-dependencies-
-      - run:
-          name: Package
-          command: |
-            mkdir deploy
-            cp -r src deploy
-            cp -r app.js deploy
-            cp package.json deploy
-            cp package-lock.json deploy
       - run:
           name: Deploy
-          working_directory: deploy
           command: |
             git config --global user.email "dsi@zenika.com"
             git config --global user.name "Zenika"
-            git init
-            git add .
-            git commit -m "deploy!"
-            sudo npm install --global clever-tools
+            npm install --global clever-tools
             clever login --secret=$CLEVER_SECRET --token=$CLEVER_TOKEN
             clever link << parameters.clever-app-id >>
             clever deploy --force
+
 workflows:
-  qc-test-deploy-staging:
+  qc-test-deploy:
     jobs:
-      - install-dependencies
-      - prettier:
-          requires:
-            - install-dependencies
-      - tests:
-          requires:
-            - install-dependencies
+      - node/run:
+          name: prettier
+          npm-run: prettier:check
+          filters:
+            tags:
+              only: /^v.*/
+      - node/test:
+          name: tests
+          filters:
+            tags:
+              only: /^v.*/
       - deploy:
           name: deploy-staging
           requires:
@@ -92,30 +47,18 @@ workflows:
             - tests
           clever-app-id: app_f3ae1d9d-d9ad-4ce3-a019-d18a99e5c73a
           context: clever-cloud2-zenika-dev
-          filters: &deploy-staging-filters
+          filters:
             branches:
               only: main
-  qc-test-deploy:
-    jobs:
-      - install-dependencies:
-          filters: &deploy-filters
-            tags:
-              only: /^v.*/
-            branches:
-              ignore: /.*/
-      - prettier:
-          requires:
-            - install-dependencies
-          filters: *deploy-filters
-      - tests:
-          requires:
-            - install-dependencies
-          filters: *deploy-filters
       - deploy:
-          name: deploy
+          name: deploy-production
           requires:
             - prettier
             - tests
           clever-app-id: app_fe53126e-88fa-4a72-9e47-366b0ffed556
           context: clever-cloud2-zenika-dev
-          filters: *deploy-filters
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
