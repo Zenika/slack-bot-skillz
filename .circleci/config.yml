@@ -49,7 +49,7 @@ workflows:
           context: clever-cloud2-zenika-dev
           filters:
             branches:
-              only: upgrade_ci
+              only: main
       - deploy:
           name: deploy-production
           requires:
