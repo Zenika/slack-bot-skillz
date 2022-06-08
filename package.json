@@ -1,6 +1,6 @@
 {
   "name": "skillz-bot",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "basic bot for Skillz app",
   "main": "app.js",
   "scripts": {
