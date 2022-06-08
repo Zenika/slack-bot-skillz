@@ -8,6 +8,7 @@ const {
   postTwoLinesMessageWithoutTitle,
 } = require("../../messages/postMessages");
 const { switchCommands } = require("../../lib/utils/switchCommands");
+const { getChannelID } = require("../../lib/bolt/getSlackInformations");
 
 module.exports = {
   commandNoteSkill(app) {
@@ -17,11 +18,12 @@ module.exports = {
         await ack();
         const responseCommand = await changeCommandValueForView(body.text);
         await changeCommandValueForAction(body.text);
-
         try {
+          const channelID = await getChannelID(body["user_id"], app, app.token);
+
           if (responseCommand === "fail") {
             await postTwoLinesMessageWithoutTitle(
-              payload.channel_id,
+              channelID,
               ":sweat: Sorry, this I can't understand you. You can create a skill trough the Skillz app (https://skillz.zenika.com/skills/mine/languages-and-frameworks/add) or you can use this command like this : /skillz-note-skill [skill name]",
               ":bulb: _Get the list of some skills to note with_ /skillz-reminder-message command",
               app,
@@ -31,7 +33,7 @@ module.exports = {
           } else {
             await app.client.chat.postMessage({
               token: context.botToken,
-              channel: payload.channel_id,
+              channel: channelID,
               blocks: [
                 {
                   type: "section",

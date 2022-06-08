@@ -1,6 +1,7 @@
 const { responseByTopic } = require("./responseByTopic");
 const { postTwoLinesMessage } = require("../../messages/postMessages");
 const { switchCommands } = require("../../lib/utils/switchCommands");
+const { getChannelID } = require("../../lib/bolt/getSlackInformations");
 
 module.exports = {
   commandByTopic(app) {
@@ -10,9 +11,10 @@ module.exports = {
         await ack();
         try {
           const responseCommand = await responseByTopic(body.text);
+          const channelID = await getChannelID(body["user_id"], app, app.token);
           if (responseCommand === "fail") {
             await postTwoLinesMessage(
-              payload.channel_id,
+              channelID,
               "*Command failed* :sweat:",
               ":bulb: *Use this command like this* : /skillz-by-topic [topic] [city] \n\n :clipboard: _Topic_ available : Frontend, Backend, Agilité, Maker, Réseau, Web, Security, Microservices, Network, Ops, Devops, IA, Data, Mobile \n :globe_with_meridians: _City_ available : Paris, Nantes, Singapore, Bordeaux, Brest, Montreal, Grenoble, Lyon, Rennes, Lille",
               app,
@@ -21,7 +23,7 @@ module.exports = {
             );
           } else if (responseCommand !== "") {
             await postTwoLinesMessage(
-              payload.channel_id,
+              channelID,
               ":heart: *All these Skillz users at this agency liked this topic* :heart:",
               responseCommand,
               app,
@@ -30,7 +32,7 @@ module.exports = {
             );
           } else {
             await postTwoLinesMessage(
-              payload.channel_id,
+              channelID,
               "*Sorry* :sweat:",
               "Nobody like this topic at this agency",
               app,
