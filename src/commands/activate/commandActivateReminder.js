@@ -4,7 +4,10 @@ const {
 const {
   setBotNotifications,
 } = require("../../lib/requestsHasura/setBotNotifications");
-const { getUserEmail } = require("../../lib/bolt/getSlackInformations");
+const {
+  getUserEmail,
+  getChannelID,
+} = require("../../lib/bolt/getSlackInformations");
 const { postTwoLinesMessage } = require("../../messages/postMessages");
 const { switchCommands } = require("../../lib/utils/switchCommands");
 
@@ -18,12 +21,13 @@ module.exports = {
         try {
           const userEmail = await getUserEmail(user, app, app.token);
           const responseCommand = await getBotNotifications(userEmail);
+          const channelID = await getChannelID(body["user_id"], app, app.token);
           if (
             responseCommand.User &&
             responseCommand.User[0].botNotifications === true
           ) {
             await postTwoLinesMessage(
-              payload.channel_id,
+              channelID,
               "*Command failed* :sweat:",
               ":bulb: *The Skillz reminder is already activate. To desactivate it try * : /skillz-desactivate",
               app,
@@ -33,7 +37,7 @@ module.exports = {
           } else {
             await setBotNotifications(userEmail, true);
             await postTwoLinesMessage(
-              payload.channel_id,
+              channelID,
               ":hugging_face: *You've activated my monthly reminders* :hugging_face:",
               ":bulb: Get a monthly reminder about your skills that have not been updated for more than 1 month. _You can display them right now by running_ /skillz-reminder-message :bulb:",
               app,

@@ -1,4 +1,5 @@
 var pjson = require("../../../package.json");
+const { getChannelID } = require("../../lib/bolt/getSlackInformations");
 const { switchCommands } = require("../../lib/utils/switchCommands");
 const { postSingleLineMessage } = require("../../messages/postMessages");
 
@@ -9,8 +10,9 @@ module.exports = {
       async ({ ack, payload, context, body }) => {
         await ack();
         try {
+          const channelId = await getChannelID(body["user_id"], app, app.token);
           await postSingleLineMessage(
-            body["channel_id"],
+            channelId,
             `The actual version of this bot is ${pjson.version}`,
             app,
             context.botToken,
