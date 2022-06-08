@@ -8,9 +8,6 @@ const { getUserEmail } = require("../../lib/bolt/getSlackInformations");
 const {
   getSkillIDByName,
 } = require("../../lib/requestsHasura/getSkillIDByName");
-const {
-  getLastCreatedAtFromSkill,
-} = require("../../lib/utils/getLastCreatedAtFromSkill");
 
 let skillName = "";
 
@@ -32,7 +29,6 @@ module.exports = {
       let skillLastDesireValue = 1;
       let skillLastSkillValue = 1;
       let newSkill = true;
-      let lastSkillInfos = [];
       const userEmail = await getUserEmail(
         body["user"]["id"],
         app,
@@ -43,13 +39,13 @@ module.exports = {
         userEmail,
         skillID.id
       );
-      if (response.UserSkillDesire.length > 0) {
-        lastSkillInfos = getLastCreatedAtFromSkill(
-          response.UserSkillDesire[0].Skill.UserSkillDesires
-        );
+      if (
+        response.User.length > 0 &&
+        response.User[0].UserSkillDesires.length > 0
+      ) {
         newSkill = false;
-        skillLastDesireValue = lastSkillInfos.desireLevel;
-        skillLastSkillValue = lastSkillInfos.skillLevel;
+        skillLastDesireValue = response.User[0].UserSkillDesires[0].desireLevel;
+        skillLastSkillValue = response.User[0].UserSkillDesires[0].skillLevel;
       }
       try {
         await app.client.views.open({

@@ -17,30 +17,16 @@ Date.prototype.subDays = function (days) {
 };
 
 async function arrayOfDelayedSkillsByUsers(app, email) {
-  let lastUpdates = [{}];
-  let updatesDelayed = [];
-
   var todayDate = new Date();
+  const response = await getSkillsDatesUpdates(email);
+  let lastSkillsUpdated = [];
 
-  lastUpdates = await getSkillsDatesUpdates(email);
-  for (let j = 0; j < lastUpdates.UserSkillDesire.length; j++) {
-    if (
-      new Date(
-        lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires[
-          lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires.length - 1
-        ].created_at
-      ) < todayDate.subDays(30)
-    ) {
-      updatesDelayed = updatesDelayed.concat(
-        lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires[
-          lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires.length - 1
-        ].skillId
-      );
+  for (let i = 0; i < response.length; i++) {
+    if (new Date(response[i].created_at) < todayDate.subDays(30)) {
+      lastSkillsUpdated = lastSkillsUpdated.concat(response[i].skillId);
     }
   }
-  await fillSkillsByCategory(email, updatesDelayed, app, false);
-
-  return updatesDelayed;
+  await fillSkillsByCategory(email, lastSkillsUpdated, app, false);
 }
 
 function dateToCompare(todayDate) {
@@ -52,10 +38,8 @@ function dateToCompare(todayDate) {
 }
 
 async function getDatasToFillInCategories(email, app) {
-  var todayDate = new Date();
-  let lastUpdates = [{}];
   let notificationsUser = [];
-  let updatesDelayed = [];
+  var todayDate = new Date();
 
   notificationsUser = await getBotNotifications(email);
   if (
@@ -64,23 +48,15 @@ async function getDatasToFillInCategories(email, app) {
     notificationsUser.User[0].botNotifications === false
   )
     return -1;
-  lastUpdates = await getSkillsDatesUpdates(email);
-  for (let j = 0; j < lastUpdates.UserSkillDesire.length; j++) {
-    if (
-      new Date(
-        lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires[
-          lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires.length - 1
-        ].created_at
-      ) < dateToCompare(todayDate)
-    ) {
-      updatesDelayed = updatesDelayed.concat(
-        lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires[
-          lastUpdates.UserSkillDesire[j].Skill.UserSkillDesires.length - 1
-        ].skillId
-      );
+  const response = await getSkillsDatesUpdates(email);
+  let lastSkillsUpdated = [];
+
+  for (let i = 0; i < response.length; i++) {
+    if (new Date(response[i].created_at) < todayDate.subDays(30)) {
+      lastSkillsUpdated = lastSkillsUpdated.concat(response[i].skillId);
     }
   }
-  await fillSkillsByCategory(email, updatesDelayed, app, true);
+  await fillSkillsByCategory(email, lastSkillsUpdated, app, true);
 }
 
 async function arrayOfDelayedSkillsByAllUsers(app) {

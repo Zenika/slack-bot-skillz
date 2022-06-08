@@ -6,6 +6,6 @@ async function getSkillsDatesUpdates(email) {
     email: email,
   };
   const response = await request(GET_LAST_UPDATED_SKILLS, variables);
-  return response.data;
+  return response.data.UsersCurrentSkillsAndDesires;
 }
 module.exports.getSkillsDatesUpdates = getSkillsDatesUpdates;
