@@ -42,6 +42,13 @@ function switchCommands(command) {
         default:
           return `/skillz-version_${process.env.ENV}`;
       }
+    case "/botUsers":
+      switch (process.env.ENV) {
+        case "PRODUCTION":
+          return "/skillz-bot-users";
+        default:
+          return `/skillz-bot-users_${process.env.ENV}`;
+      }
     default:
       console.log("not recognized command");
       return "not recognized command";
