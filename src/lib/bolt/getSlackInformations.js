@@ -38,6 +38,18 @@ async function getUserEmail(userID, app, slackBotToken) {
   }
 }
 
+async function getCollaboratorsList(app) {
+  try {
+    let collaboratorsList = await app.client.admin.apps.requests.list({
+      token: app.token
+    });
+    console.log("collaboratorsList", collaboratorsList);
+  } catch (e) {
+    console.error("error", e);
+  }
+}
+
+module.exports.getCollaboratorsList = getCollaboratorsList;
 module.exports.getChannelID = getChannelID;
 module.exports.getUserID = getUserID;
 module.exports.getUserEmail = getUserEmail;

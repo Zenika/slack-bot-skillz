@@ -6,7 +6,6 @@ const {
 } = require("./desactivate/commandDesactivateReminder");
 const { commandOldSkills } = require("./oldSkills/commandOldSkills");
 const { commandVersion } = require("./version/commandVersion");
-const { commandBotUsers } = require("./botUsers/commandBotUsers");
 
 module.exports = {
   commandsHandler(app) {
@@ -16,6 +15,5 @@ module.exports = {
     commandDesactivate(app);
     commandOldSkills(app);
     commandVersion(app);
-    commandBotUsers(app);
   },
 };

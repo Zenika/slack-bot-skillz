@@ -5,7 +5,7 @@ const { actionsHandler } = require("./src/actions/actionsHandler");
 const { viewHandler } = require("./src/views/viewHandler");
 const { monthlyCron } = require("./src/cron/monthlyCron");
 const { getAllTopics } = require("./src/lib/requestsHasura/getAllTopics");
-
+const { getCollaboratorsList } = require("./src/lib/bolt/getSlackInformations");
 const receiver = new ExpressReceiver({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
   logLevel: LogLevel.INFO,
@@ -35,6 +35,7 @@ app.event("message", async ({ event, client }) => {
   actionsHandler(app);
   commandsHandler(app);
   viewHandler(app);
+  await getCollaboratorsList(app)
   //getAllAgencies()
   getAllTopics();
   await app.start({ port: process.env.PORT });
