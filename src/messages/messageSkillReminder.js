@@ -26,13 +26,13 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Languages and Frameworks*",
+        "*Practices*",
         arrayLanguagesAndFrameworks,
-        "*Tools*",
+        "*Activities*",
         arrayTools,
-        "*Technics and Methods*",
+        "*Behaviors*",
         arrayTechnicsAndMethods,
-        "*Platforms*",
+        "*Knowledge*",
         arrayPlatforms,
         app,
         app.botToken,
@@ -53,11 +53,11 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Languages and Frameworks*",
+        "*Practices*",
         arrayLanguagesAndFrameworks,
-        "*Tools*",
+        "*Activities*",
         arrayTools,
-        "*Technics and Methods*",
+        "*Behaviors*",
         arrayTechnicsAndMethods,
         app,
         app.botToken,
@@ -78,11 +78,11 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Languages and Frameworks*",
+        "*Practices*",
         arrayLanguagesAndFrameworks,
-        "*Platforms*",
+        "*Knowledge*",
         arrayPlatforms,
-        "*Technics and Methods*",
+        "*Behaviors*",
         arrayTechnicsAndMethods,
         app,
         app.botToken,
@@ -103,11 +103,11 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Tools*",
+        "*Activities*",
         arrayTools,
-        "*Platforms*",
+        "*Knowledge*",
         arrayPlatforms,
-        "*Technics and Methods*",
+        "*Behaviors*",
         arrayTechnicsAndMethods,
         app,
         app.botToken,
@@ -128,11 +128,11 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Languages and Frameworks*",
+        "*Practices*",
         arrayLanguagesAndFrameworks,
-        "*Tools*",
+        "*Activities*",
         arrayTools,
-        "*Platforms*",
+        "*Knowledge*",
         arrayPlatforms,
         app,
         app.botToken,
@@ -149,9 +149,9 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Languages and Frameworks*",
+        "*Practices*",
         arrayLanguagesAndFrameworks,
-        "*Tools*",
+        "*Activities*",
         arrayTools,
         app,
         app.botToken,
@@ -171,9 +171,9 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Languages and Frameworks*",
+        "*Practices*",
         arrayLanguagesAndFrameworks,
-        "*Platforms*",
+        "*Knowledge*",
         arrayPlatforms,
         app,
         app.botToken,
@@ -193,9 +193,9 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Languages and Frameworks*",
+        "*Practices*",
         arrayLanguagesAndFrameworks,
-        "*Technics and Methods*",
+        "*Behaviors*",
         arrayTechnicsAndMethods,
         app,
         app.botToken,
@@ -212,9 +212,9 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Tools*",
+        "*Activities*",
         arrayTools,
-        "*Platforms*",
+        "*Knowledge*",
         arrayPlatforms,
         app,
         app.botToken,
@@ -231,9 +231,9 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Tools*",
+        "*Activities*",
         arrayTools,
-        "*Technics and Methods*",
+        "*Behaviors*",
         arrayTechnicsAndMethods,
         app,
         app.botToken,
@@ -250,9 +250,9 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Platforms*",
+        "*Knowledge*",
         arrayPlatforms,
-        "*Technics and Methods*",
+        "*Behaviors*",
         arrayTechnicsAndMethods,
         app,
         app.botToken,
@@ -269,7 +269,7 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Platforms*",
+        "*Knowledge*",
         arrayPlatforms,
         app,
         app.botToken,
@@ -286,7 +286,7 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Languages and Frameworks*",
+        "*Practices*",
         arrayLanguagesAndFrameworks,
         app,
         app.botToken,
@@ -303,7 +303,7 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Tools*",
+        "*Activities*",
         arrayTools,
         app,
         app.botToken,
@@ -320,7 +320,7 @@ async function postMessageSkillReminder(
         reminder
           ? "*:alarm_clock: You haven't noted any skills since more than 1 month ! So I purpose you to note some old skills below : *"
           : "*You have these skills below that hasn't been noted since more than 1 month* :blush:",
-        "*Technics and Methods*",
+        "*Behaviors*",
         arrayTechnicsAndMethods,
         app,
         app.botToken,
