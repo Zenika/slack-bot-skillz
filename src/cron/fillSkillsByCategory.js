@@ -18,18 +18,18 @@ async function fillSkillsByCategory(userEmail, arraySkill, app, reminder) {
       arraySkillName = arraySkillName.concat(
         await getSkillNameAndCategory(arraySkill[i])
       );
-      if (arraySkillName[i].Category.label === "languages-and-frameworks") {
+      if (arraySkillName[i].Category.label === "practices") {
         arrayLanguagesAndFrameworks = arrayLanguagesAndFrameworks.concat(
           arraySkillName[i].name
         );
       }
-      if (arraySkillName[i].Category.label === "tools") {
+      if (arraySkillName[i].Category.label === "activities") {
         arrayTools = arrayTools.concat(arraySkillName[i].name);
       }
-      if (arraySkillName[i].Category.label === "platforms") {
+      if (arraySkillName[i].Category.label === "knowledge") {
         arrayPlatforms = arrayPlatforms.concat(arraySkillName[i].name);
       }
-      if (arraySkillName[i].Category.label === "technics-and-methods") {
+      if (arraySkillName[i].Category.label === "behaviors") {
         arrayTechnicsAndMethods = arrayTechnicsAndMethods.concat(
           arraySkillName[i].name
         );
