@@ -5,13 +5,12 @@ async function verifyAgencyIsGiven(text) {
   let agency = "";
   try {
     const response = await getAllAgencies();
-
+    const tmp = text.split(" ");
+    if (text < 2) return "";
     for (let i = 0; i < response.Agency.length; i++) {
-      if (
-        (agency = getSpecificArgument(response.Agency[i].name, text)) !== "" &&
-        response.Agency[i].name.toUpperCase() === agency.toUpperCase()
-      )
+      if (tmp[0].toUpperCase() === response.Agency[i].name.toUpperCase()) {
         return response.Agency[i].name;
+      }
     }
   } catch (e) {
     console.error(e);

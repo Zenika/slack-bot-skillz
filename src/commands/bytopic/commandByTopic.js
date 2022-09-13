@@ -31,7 +31,7 @@ module.exports = {
             await postTwoLinesMessage(
               channelID,
               "*Command failed* :sweat:",
-              `:bulb: *Use this command like this* : /skillz-by-topic [topic] [city] \n\n :clipboard: _Topic_ available : ${allTopics} \n :globe_with_meridians: _City_ available : ${allAgencies}`,
+              `:bulb: *Use this command like this* : /skillz-by-topic [city] [topic] \n\n :globe_with_meridians: _City_ available : ${allAgencies} \n :clipboard: _Topic_ available : ${allTopics}`,
               app,
               context.botToken,
               "Response from /skillz-by-topic command"
