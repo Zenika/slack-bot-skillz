@@ -4,14 +4,16 @@ module.exports = {
   homePage(app) {
     app.event("app_home_opened", async ({ event, client, body }) => {
       try {
-        const user = body["user_id"];
+        const user = body["event"]["user"];
         const collaborators = process.env.COLLABORATORS.split(";");
         let itsACollaborator = false;
         const botUsers = await getBotUsers();
+        const email = await getUserEmail(user, app, app.token);
 
         for (let i = 0; i < collaborators.length; i++) {
-          if ((await getUserEmail(user, app, app.token)) === user)
+          if (email == collaborators[i]) {
             itsACollaborator = true;
+          }
         }
 
         if (itsACollaborator) {
