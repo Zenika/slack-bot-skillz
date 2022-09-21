@@ -115,7 +115,7 @@ module.exports = {
                     emoji: true,
                   },
                   image_url:
-                    "https://media.discordapp.net/attachments/1022081920735129601/1022084020848312330/imageedit_4_9226554227.gif",
+                    "https://media.discordapp.net/attachments/1022081920735129601/1022143014010892349/imageedit_4_9226554227.png",
                   alt_text: "marg",
                 },
               ],
