@@ -210,7 +210,7 @@ async function postFourLinesMessageReminder(
             type: "mrkdwn",
             text: reminder
               ? ":mechanic: This is an automatic message. To desactivate me use the command /skillz-desactivate"
-              : ":bulb: You can have this information monthly. Be sure that you've used the /skillz-activate command",
+              : ":bulb: You have this information if you didn't update Skillz app since more than 1 month. If you want it, be sure that you've used the /skillz-activate command",
           },
         },
       ],
@@ -314,7 +314,7 @@ async function postThreeLinesMessageReminder(
             type: "mrkdwn",
             text: reminder
               ? ":mechanic: This is an automatic message. To desactivate me use the command /skillz-desactivate"
-              : ":bulb: You can have this information monthly. Be sure that you've used the /skillz-activate command",
+              : ":bulb: You have this information if you didn't update Skillz app since more than 1 month. If you want it, be sure that you've used the /skillz-activate command",
           },
         },
       ],
@@ -399,7 +399,7 @@ async function postTwoLinesMessageReminder(
             type: "mrkdwn",
             text: reminder
               ? ":mechanic: This is an automatic message. To desactivate me use the command /skillz-desactivate"
-              : ":bulb: You can have this information monthly. Be sure that you've used the /skillz-activate command",
+              : ":bulb: You have this information if you didn't update Skillz app since more than 1 month. If you want it, be sure that you've used the /skillz-activate command",
           },
         },
       ],
@@ -465,7 +465,7 @@ async function postOneLineMessageReminder(
             type: "mrkdwn",
             text: reminder
               ? ":mechanic: This is an automatic message. To desactivate me use the command /skillz-desactivate"
-              : ":bulb: You can have this information monthly. Be sure that you've used the /skillz-activate command",
+              : ":bulb: You have this information if you didn't update Skillz app since more than 1 month. If you want it, be sure that you've used the /skillz-activate command",
           },
         },
       ],
