@@ -39,7 +39,7 @@ module.exports = {
             await postTwoLinesMessage(
               channelID,
               ":hugging_face: *You've activated my monthly reminders* :hugging_face:",
-              ":bulb: Get a monthly reminder about your skills that have not been updated for more than 1 month. _You can display them right now by running_ /skillz-reminder-message :bulb:",
+              ":bulb: Get a reminder about your old noteskills if you have not updated them for more than one month. _You can display them right now by running_ /skillz-reminder-message :bulb:",
               app,
               context.botToken,
               "Response from /skillz-activate command"
