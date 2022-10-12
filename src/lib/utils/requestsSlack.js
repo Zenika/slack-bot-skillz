@@ -15,7 +15,6 @@ const checkStatus = (response) => {
 };
 
 async function request(url, variables) {
-
   const options = {
     headers: {
       "Content-Type": "application/json",
