@@ -5,6 +5,7 @@ const { actionsHandler } = require("./src/actions/actionsHandler");
 const { viewHandler } = require("./src/views/viewHandler");
 const { monthlyCron } = require("./src/cron/monthlyCron");
 const { getAllTopics } = require("./src/lib/requestsHasura/getAllTopics");
+const { postingWebhook } = require("./src/postingWebhooks")
 
 const receiver = new ExpressReceiver({
   signingSecret: process.env.SLACK_SIGNING_SECRET,
@@ -32,6 +33,7 @@ app.event("message", async ({ event, client }) => {
 
 (async () => {
   homePage(app);
+  postingWebhook()
   actionsHandler(app);
   commandsHandler(app);
   viewHandler(app);
