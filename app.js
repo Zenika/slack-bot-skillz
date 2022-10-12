@@ -33,7 +33,7 @@ app.event("message", async ({ event, client }) => {
 
 (async () => {
   homePage(app);
-  postingWebhooks();
+  //postingWebhooks();
   actionsHandler(app);
   commandsHandler(app);
   viewHandler(app);
